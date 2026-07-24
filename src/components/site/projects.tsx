@@ -280,7 +280,7 @@ function ProjectDetail({ project, onClose }: { project: Project; onClose: () => 
   ];
 
   return (
-    <div className="fixed inset-0 z-[80] flex justify-end bg-foreground/40 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[80] flex justify-end bg-foreground/20 backdrop-blur-sm" onClick={onClose}>
       <div
         className="h-full w-full max-w-2xl overflow-y-auto bg-background shadow-2xl"
         onClick={(e) => e.stopPropagation()}
@@ -337,7 +337,7 @@ function ProjectDetail({ project, onClose }: { project: Project; onClose: () => 
           <div className="mt-12 flex flex-wrap gap-3">
             <a
               href="#"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm text-background"
+              className="inline-flex items-center gap-2 rounded-full border border-foreground/70 bg-primary/40 px-5 py-3 text-sm text-foreground transition-colors hover:bg-primary/60"
             >
               View case study <ArrowUpRight size={13} />
             </a>
