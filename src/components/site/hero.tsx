@@ -82,7 +82,7 @@ export function Hero() {
 
         {/* Right - Map */}
         <div className="lg:col-span-5 flex items-center justify-center">
-          <Reveal delay={200}>
+          <Reveal delay={200} className="w-full flex justify-center">
             <ExplorationMap />
           </Reveal>
         </div>

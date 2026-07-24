@@ -73,10 +73,10 @@ export function ExplorationMap() {
         style={{ top: "80%", left: "50%" }}
       >
         <div className="flex flex-col items-center gap-2">
-          <div className="grid h-14 w-14 place-items-center rounded-full border border-foreground bg-background">
-            <div className="h-2 w-2 rotate-45 bg-foreground" />
+          <div className="grid h-14 w-14 place-items-center rounded-full border border-foreground/60 bg-background/80">
+            <div className="h-2 w-2 rotate-45 bg-secondary" />
           </div>
-          <span className="font-mono text-[0.62rem] tracking-[0.28em] text-foreground">BUILDING</span>
+          <span className="font-mono text-[0.62rem] tracking-[0.28em] text-foreground/70">BUILDING</span>
         </div>
       </div>
 
@@ -164,10 +164,10 @@ function Node({
           />
           <div
             className={`relative grid ${dim} place-items-center rounded-full border ${
-              active ? "border-foreground" : "border-foreground/50"
-            } ${bg}/40 backdrop-blur-sm transition-all`}
+              active ? "border-foreground/70" : "border-foreground/30"
+            } ${bg}/25 backdrop-blur-sm transition-all`}
           >
-            <div className={`h-1.5 w-1.5 rounded-full bg-foreground ${active ? "" : "pulse-soft"}`} />
+            <div className={`h-1.5 w-1.5 rounded-full bg-secondary ${active ? "" : "pulse-soft"}`} />
           </div>
         </div>
         <span
