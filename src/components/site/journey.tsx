@@ -80,7 +80,7 @@ export function Journey() {
               <h2 className="font-serif text-[clamp(2rem,5vw,4rem)] font-medium leading-[1] tracking-[-0.02em] text-foreground">
                 Where has curiosity
                 <br />
-                <span className="italic">taken me?</span>
+                <span className="italic text-foreground/85">taken me?</span>
               </h2>
             </Reveal>
             <Reveal delay={120}>
@@ -95,66 +95,103 @@ export function Journey() {
 
           <div className="lg:col-span-7">
             <ol className="relative">
-              {/* organic path */}
-              <div className="pointer-events-none absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-border via-border to-transparent md:left-[9px]" />
+              {/* Organic path line with blue gradient */}
+              <div className="pointer-events-none absolute left-[11px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-[#8CC0EB] via-[#AEE2FF] to-border/40 md:left-[13px]" />
 
-              {chapters.map((c, i) => (
-                <Reveal key={c.year + c.title} delay={i * 60}>
-                  <li className="relative pl-8 md:pl-12 pb-14 last:pb-0">
-                    <span
-                      className={`absolute left-0 top-1.5 grid h-4 w-4 place-items-center rounded-full md:h-5 md:w-5 ${
-                        c.status === "current"
-                          ? "bg-primary"
-                          : c.status === "next"
-                          ? "border border-foreground bg-background"
-                          : "bg-foreground"
-                      }`}
-                    >
-                      {c.status === "next" && <span className="h-1.5 w-1.5 rounded-full bg-foreground pulse-soft" />}
-                    </span>
+              {chapters.map((c, i) => {
+                const isCurrent = c.status === "current";
+                const isNext = c.status === "next";
 
-                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                      <span className="font-mono text-[0.7rem] tracking-[0.28em] text-foreground">
-                        {c.year}
+                return (
+                  <Reveal key={c.year + c.title} delay={i * 60}>
+                    <li className="relative pl-10 md:pl-14 pb-12 last:pb-0">
+                      {/* Node indicator */}
+                      <span
+                        className={`absolute left-0 top-1.5 grid h-6 w-6 place-items-center rounded-full transition-all ${
+                          isCurrent
+                            ? "border-2 border-[#8CC0EB] bg-[#AEE2FF] shadow-md ring-4 ring-[#AEE2FF]/30"
+                            : isNext
+                            ? "border-2 border-[#8CC0EB] bg-mist"
+                            : "border border-[#8CC0EB]/60 bg-background"
+                        }`}
+                      >
+                        {isCurrent ? (
+                          <span className="h-2 w-2 rounded-full bg-[#172033]" />
+                        ) : isNext ? (
+                          <span className="h-2 w-2 rounded-full bg-[#8CC0EB] pulse-soft" />
+                        ) : (
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#8CC0EB]" />
+                        )}
                       </span>
-                      <span className="font-mono text-[0.62rem] tracking-[0.24em] text-muted-foreground uppercase">
-                        <T en={c.tag.en} id={c.tag.id} />
-                      </span>
-                    </div>
 
-                    <h3 className="mt-3 font-serif text-2xl font-medium tracking-tight text-foreground md:text-3xl">
-                      {c.title}
-                    </h3>
-                    <p className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/75">
-                      <T en={c.body.en} id={c.body.id} />
-                    </p>
+                      {/* Content wrapper with distinct card styling for current & next */}
+                      <div
+                        className={`rounded-xl p-6 transition-all duration-300 ${
+                          isCurrent
+                            ? "border border-[#8CC0EB] bg-mist shadow-sm"
+                            : isNext
+                            ? "border-2 border-dashed border-[#8CC0EB] bg-mist/70 shadow-sm"
+                            : "border border-transparent hover:border-border hover:bg-background/60"
+                        }`}
+                      >
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                          <span className={`font-mono text-xs font-bold tracking-[0.28em] ${isCurrent || isNext ? "text-[#172033] dark:text-[#AEE2FF]" : "text-foreground"}`}>
+                            {c.year}
+                          </span>
+                          <span className="h-1 w-1 rounded-full bg-[#8CC0EB]" />
+                          <span className="font-mono text-[0.65rem] font-medium tracking-[0.2em] text-[#64748B] uppercase">
+                            <T en={c.tag.en} id={c.tag.id} />
+                          </span>
+                          {isCurrent && (
+                            <span className="ml-auto rounded-full bg-[#AEE2FF] px-2.5 py-0.5 font-mono text-[0.6rem] font-semibold text-[#172033]">
+                              CURRENT FOCUS
+                            </span>
+                          )}
+                          {isNext && (
+                            <span className="ml-auto rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-3 py-1 font-mono text-[0.62rem] font-semibold tracking-[0.16em] text-[#172033] shadow-sm">
+                              OPEN CHAPTER
+                            </span>
+                          )}
+                        </div>
 
-                    {c.strands && (
-                      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                        {c.strands.map((s) => (
-                          <div key={s.label} className="border-t border-border pt-3">
-                            <div className="font-mono text-[0.6rem] tracking-[0.24em] text-muted-foreground">
-                              {s.label}
-                            </div>
-                            <p className="mt-1.5 text-sm leading-relaxed text-foreground/80">
-                              <T en={s.en} id={s.id} />
-                            </p>
+                        <h3 className="mt-3 font-serif text-2xl font-medium tracking-tight text-foreground md:text-3xl">
+                          {c.title}
+                        </h3>
+                        <p className="mt-3 max-w-2xl text-base leading-relaxed text-foreground/80">
+                          <T en={c.body.en} id={c.body.id} />
+                        </p>
+
+                        {c.strands && (
+                          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                            {c.strands.map((s) => (
+                              <div key={s.label} className="rounded-lg border border-[#8CC0EB]/30 bg-background/80 p-3">
+                                <div className="font-mono text-[0.6rem] font-semibold tracking-[0.24em] text-[#8CC0EB]">
+                                  {s.label}
+                                </div>
+                                <p className="mt-1 text-xs leading-relaxed text-foreground/80">
+                                  <T en={s.en} id={s.id} />
+                                </p>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    )}
+                        )}
 
-                    {c.status === "next" && (
-                      <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-foreground/70 px-3.5 py-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-secondary pulse-soft" />
-                        <span className="font-mono text-[0.62rem] tracking-[0.24em] text-foreground">
-                          AVAILABLE FOR INTERNSHIP
-                        </span>
+                        {isNext && (
+                          <div className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 shadow-sm">
+                            <span className="relative flex h-2 w-2">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8CC0EB] opacity-75" />
+                              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#172033]" />
+                            </span>
+                            <span className="font-mono text-[0.68rem] font-semibold tracking-[0.24em] text-[#172033]">
+                              AVAILABLE FOR INTERNSHIP
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </li>
-                </Reveal>
-              ))}
+                    </li>
+                  </Reveal>
+                );
+              })}
             </ol>
           </div>
         </div>

@@ -5,6 +5,9 @@ import { Hero } from "@/components/site/hero";
 import { About } from "@/components/site/about";
 import { Journey } from "@/components/site/journey";
 import { Projects } from "@/components/site/projects";
+import { Toolkit } from "@/components/site/toolkit";
+import { Proof } from "@/components/site/proof";
+import { Connect } from "@/components/site/connect";
 import { Footer } from "@/components/site/footer";
 import { CustomCursor } from "@/components/site/cursor";
 
@@ -15,12 +18,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A quiet digital field journal by Nasywa — Informatics student exploring AI, Data, and Software by building things to understand how they work.",
+          "Personal field journal of Nasywa Chonifahtun Fiqrihiyah — Informatics student exploring AI, Data, and Software Development by building real projects.",
       },
       { property: "og:title", content: "Nasywa — Digital Explorer & Builder" },
       {
         property: "og:description",
-        content: "Personal field journal: exploration, experiments, and things built while learning.",
+        content: "Personal field journal: exploration, experiments, and projects built while learning.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -39,6 +42,9 @@ function Index() {
         <About />
         <Journey />
         <Projects />
+        <Toolkit />
+        <Proof />
+        <Connect />
         <Footer />
       </main>
     </SiteProvider>

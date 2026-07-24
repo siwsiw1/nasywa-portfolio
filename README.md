@@ -1,29 +1,47 @@
-# Welcome to your Lovable project
+# Nasywa's Digital Field Journal
 
-This project was built with [Lovable](https://lovable.dev).
+Personal digital field journal of **Nasywa Chonifahtun Fiqrihiyah** — Informatics student exploring AI, Data, and Software by building.
 
-## Build with Lovable
+## Tech Stack
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- **Framework**: [TanStack Start](https://tanstack.com/start)
+- **UI & Styling**: [React 19](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/)
+- **Icons & Components**: [Lucide React](https://lucide.dev/), [Radix UI](https://www.radix-ui.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Getting Started
 
-## Development
+### Prerequisites
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Make sure you have Node.js and Bun (or npm) installed.
+
+### Development
+
+Install dependencies and start the development server:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+bun install
+bun run dev
+```
+
+Or with npm:
+
+```sh
+npm install
 npm run dev
 ```
 
-## Built with
+### Build
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+To create a production build:
+
+```sh
+bun run build
+```
+
+## Project Structure
+
+- `src/routes/` - TanStack Start routes
+- `src/components/` - UI components
+- `src/styles.css` - Global Tailwind CSS styles

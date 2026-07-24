@@ -5,7 +5,10 @@ import { Reveal } from "./reveal";
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen pt-32 pb-20">
+    <section id="home" className="relative min-h-screen pt-32 pb-20 overflow-hidden">
+      {/* Soft atmospheric blue mist glow in top background */}
+      <div className="pointer-events-none absolute -top-24 right-0 h-[500px] w-[500px] rounded-full bg-[#AEE2FF]/20 blur-[120px] dark:bg-[#8CC0EB]/10" />
+
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:px-10 lg:grid-cols-12 lg:gap-10">
         {/* Left */}
         <div className="lg:col-span-7 flex flex-col justify-center">
@@ -22,7 +25,7 @@ export function Hero() {
             <h1 className="mt-8 font-serif text-[clamp(2.75rem,7vw,5.75rem)] font-medium leading-[0.98] tracking-[-0.02em] text-foreground">
               Digital Explorer
               <br />
-              <span className="italic text-foreground/80">& Builder</span>
+              <span className="italic text-foreground/85">& Builder</span>
             </h1>
           </Reveal>
 
@@ -46,12 +49,12 @@ export function Hero() {
                 </div>
               </div>
               <div className="hidden h-10 w-px bg-border sm:block" />
-              <div className="flex items-center gap-2.5">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-70" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
+              <div className="flex items-center gap-3 rounded-full border border-[#8CC0EB]/60 bg-mist px-3.5 py-1.5 shadow-sm">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8CC0EB] opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#8CC0EB]" />
                 </span>
-                <span className="font-mono text-[0.7rem] tracking-[0.24em] text-foreground">
+                <span className="font-mono text-[0.68rem] font-medium tracking-[0.24em] text-[#172033] dark:text-[#F4F1EA]">
                   <T en="AVAILABLE FOR INTERNSHIP" id="TERSEDIA UNTUK MAGANG" />
                 </span>
               </div>
@@ -63,7 +66,7 @@ export function Hero() {
               <a
                 href="#journey"
                 data-hover="explore"
-                className="group inline-flex items-center gap-3 rounded-full border border-foreground/80 bg-primary/40 px-6 py-3.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/60"
+                className="group inline-flex items-center gap-3 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-6 py-3.5 text-sm font-medium text-[#172033] transition-all hover:-translate-y-0.5 hover:bg-[#8CC0EB] shadow-sm"
               >
                 <T en="Explore my journey" id="Jelajahi perjalanan saya" />
                 <ArrowDown size={14} className="transition-transform group-hover:translate-y-0.5" />
@@ -71,7 +74,7 @@ export function Hero() {
               <a
                 href="#"
                 data-hover="open"
-                className="group inline-flex items-center gap-2 px-2 py-3.5 text-sm text-foreground/80 transition-colors hover:text-foreground"
+                className="group inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3.5 text-sm text-foreground/80 transition-colors hover:border-[#8CC0EB] hover:bg-mist hover:text-foreground"
               >
                 <T en="View résumé" id="Lihat resume" />
                 <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
