@@ -63,7 +63,7 @@ export function Hero() {
               <a
                 href="#journey"
                 data-hover="explore"
-                className="group inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-3 rounded-full border border-foreground/80 bg-primary/40 px-6 py-3.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/60"
               >
                 <T en="Explore my journey" id="Jelajahi perjalanan saya" />
                 <ArrowDown size={14} className="transition-transform group-hover:translate-y-0.5" />
