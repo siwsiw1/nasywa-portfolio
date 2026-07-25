@@ -43,11 +43,11 @@ export function CustomCursor() {
     <>
       <div
         ref={dotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[100] h-1.5 w-1.5 rounded-full bg-secondary"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-1.5 w-1.5 rounded-full bg-secondary"
       />
       <div
         ref={ringRef}
-        className={`pointer-events-none fixed left-0 top-0 z-[100] flex h-8 w-8 items-center justify-center rounded-full border transition-[width,height,background-color,color,border-color] duration-300 ${
+        className={`pointer-events-none fixed left-0 top-0 z-[9999] flex h-8 w-8 items-center justify-center rounded-full border transition-[width,height,background-color,color,border-color] duration-300 ${
           label
             ? "h-[72px] w-[72px] border-primary bg-primary/30 text-foreground backdrop-blur-sm"
             : "border-foreground/30 bg-transparent text-transparent"

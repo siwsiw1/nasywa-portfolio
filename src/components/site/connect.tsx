@@ -5,7 +5,7 @@ import { T, useSite } from "./theme-provider";
 import { Mail, Linkedin, Github, FileText, Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 export function Connect() {
-  const { lang } = useSite();
+  const { lang, openResume } = useSite();
 
   // Form State
   const [formData, setFormData] = useState({
@@ -155,17 +155,16 @@ export function Connect() {
                   </a>
                 </div>
 
-                {/* Resume Download CTA */}
+                {/* Resume Modal CTA */}
                 <div className="pt-2">
-                  <a
-                    href="/resume.pdf"
-                    download="CV_Nasywa_Chonifahtun_Fiqrihiyah.pdf"
+                  <button
+                    onClick={openResume}
                     data-hover="open"
-                    className="group flex w-full items-center justify-center gap-3 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-6 py-4 text-sm font-semibold text-[#172033] shadow-sm transition-all hover:bg-[#8CC0EB]"
+                    className="group flex w-full items-center justify-center gap-3 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-6 py-4 text-sm font-semibold text-[#172033] shadow-sm transition-all hover:bg-[#8CC0EB] cursor-pointer"
                   >
                     <FileText size={16} />
-                    <T en="DOWNLOAD RESUME" id="UNDUH RESUME" />
-                  </a>
+                    <T en="VIEW & DOWNLOAD RESUME" id="LIHAT & UNDUH RESUME" />
+                  </button>
                 </div>
               </div>
             </Reveal>

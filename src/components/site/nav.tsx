@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun, Menu, X, ArrowUpRight, FileText } from "lucide-react";
-import { useSite, T } from "./theme-provider";
+import { useSite } from "./theme-provider";
 
 const links = [
-  { href: "#home", n: "01", en: "HOME", id: "BERANDA" },
-  { href: "#about", n: "02", en: "ABOUT", id: "TENTANG" },
-  { href: "#journey", n: "03", en: "JOURNEY", id: "PERJALANAN" },
-  { href: "#projects", n: "04", en: "PROJECTS", id: "PROYEK" },
-  { href: "#toolkit", n: "05", en: "TOOLKIT", id: "PERKAKAS" },
-  { href: "#proof", n: "06", en: "PROOF", id: "BUKTI" },
-  { href: "#connect", n: "07", en: "CONNECT", id: "KONTAK" },
+  { href: "#home", n: "01", label: "Home" },
+  { href: "#about", n: "02", label: "About" },
+  { href: "#journey", n: "03", label: "Journey" },
+  { href: "#projects", n: "04", label: "Projects" },
+  { href: "#toolkit", n: "05", label: "Toolkit" },
+  { href: "#proof", n: "06", label: "Proof" },
+  { href: "#connect", n: "07", label: "Connect" },
 ];
 
 export function Nav() {
-  const { theme, toggleTheme, lang, toggleLang } = useSite();
+  const { theme, toggleTheme, openResume } = useSite();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -46,13 +46,13 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                data-hover="explore"
+                data-hover="NAV"
                 className="group relative text-xs lg:text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
               >
                 <span className="font-mono text-[0.6rem] text-[#8CC0EB] mr-1">
                   {l.n}
                 </span>
-                {lang === "en" ? l.en.charAt(0) + l.en.slice(1).toLowerCase() : l.id.charAt(0) + l.id.slice(1).toLowerCase()}
+                {l.label}
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#8CC0EB] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
@@ -60,33 +60,22 @@ export function Nav() {
 
           <div className="hidden items-center gap-4 md:flex">
             <button
-              onClick={toggleLang}
-              className="font-mono text-[0.65rem] font-semibold tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
-              aria-label="Toggle language"
-            >
-              <span className={lang === "en" ? "text-foreground font-bold" : ""}>EN</span>
-              <span className="mx-1 text-[#8CC0EB]">/</span>
-              <span className={lang === "id" ? "text-foreground font-bold" : ""}>ID</span>
-            </button>
-
-            <button
               onClick={toggleTheme}
-              className="grid h-8 w-8 place-items-center rounded-full border border-[#8CC0EB]/50 bg-mist text-foreground transition-colors hover:bg-[#AEE2FF]/40"
+              className="grid h-8 w-8 place-items-center rounded-full border border-[#8CC0EB]/50 bg-mist text-foreground transition-colors hover:bg-[#AEE2FF]/40 cursor-pointer"
               aria-label="Toggle theme"
             >
               {theme === "light" ? <Moon size={13} /> : <Sun size={13} />}
             </button>
 
-            <a
-              href="/resume.pdf"
-              download="CV_Nasywa_Chonifahtun_Fiqrihiyah.pdf"
-              data-hover="open"
-              className="group inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-1.5 text-xs font-semibold text-[#172033] shadow-xs transition-all hover:bg-[#8CC0EB]"
+            <button
+              onClick={openResume}
+              data-hover="OPEN ↗"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-1.5 text-xs font-semibold text-[#172033] shadow-xs transition-all hover:bg-[#8CC0EB] cursor-pointer"
             >
               <FileText size={12} />
-              <T en="Resume" id="Resume" />
+              Resume
               <ArrowUpRight size={12} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </button>
           </div>
 
           <button
@@ -119,18 +108,10 @@ export function Nav() {
                 className="flex items-baseline gap-5 border-b border-border/60 py-4"
               >
                 <span className="font-mono text-xs text-[#8CC0EB]">{l.n} /</span>
-                <span className="text-xl font-medium tracking-tight">{lang === "en" ? l.en : l.id}</span>
+                <span className="text-xl font-medium tracking-tight">{l.label}</span>
               </a>
             ))}
             <div className="mt-8 flex items-center justify-between">
-              <button
-                onClick={toggleLang}
-                className="font-mono text-xs font-semibold tracking-[0.2em] text-muted-foreground"
-              >
-                <span className={lang === "en" ? "text-foreground font-bold" : ""}>EN</span>
-                <span className="mx-1 text-[#8CC0EB]">/</span>
-                <span className={lang === "id" ? "text-foreground font-bold" : ""}>ID</span>
-              </button>
               <button
                 onClick={toggleTheme}
                 className="grid h-9 w-9 place-items-center rounded-full border border-[#8CC0EB]/60 bg-mist"
@@ -138,14 +119,15 @@ export function Nav() {
               >
                 {theme === "light" ? <Moon size={14} /> : <Sun size={14} />}
               </button>
-              <a
-                href="/resume.pdf"
-                download="CV_Nasywa_Chonifahtun_Fiqrihiyah.pdf"
-                onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 text-xs font-semibold text-[#172033]"
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  openResume();
+                }}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 text-xs font-semibold text-[#172033] cursor-pointer"
               >
                 Resume <ArrowUpRight size={12} />
-              </a>
+              </button>
             </div>
           </div>
         </div>

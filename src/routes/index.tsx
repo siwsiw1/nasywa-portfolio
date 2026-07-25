@@ -10,20 +10,21 @@ import { Proof } from "@/components/site/proof";
 import { Connect } from "@/components/site/connect";
 import { Footer } from "@/components/site/footer";
 import { CustomCursor } from "@/components/site/cursor";
+import { ResumeModal } from "@/components/site/resume-modal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nasywa Chonifahtun Fiqrihiyah — Digital Explorer & Builder" },
+      { title: "Nasywa Chonifahtun Fiqrihiyah — I Learn by Building Things." },
       {
         name: "description",
         content:
-          "Personal field journal of Nasywa Chonifahtun Fiqrihiyah — Informatics student exploring AI, Data, and Software Development by building real projects.",
+          "Personal digital field journal of Nasywa Chonifahtun Fiqrihiyah — Informatics student exploring AI, Data, Software, and Robotics by building real systems.",
       },
-      { property: "og:title", content: "Nasywa — Digital Explorer & Builder" },
+      { property: "og:title", content: "Nasywa — I Learn by Building Things." },
       {
         property: "og:description",
-        content: "Personal field journal: exploration, experiments, and projects built while learning.",
+        content: "Exploring AI, data, and software development through real projects, experiments, and problems worth solving.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -47,6 +48,7 @@ function Index() {
         <Connect />
         <Footer />
       </main>
+      <ResumeModal />
     </SiteProvider>
   );
 }

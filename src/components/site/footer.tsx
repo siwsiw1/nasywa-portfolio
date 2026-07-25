@@ -1,7 +1,9 @@
-import { T } from "./theme-provider";
+import { T, useSite } from "./theme-provider";
 import { ArrowUp, FileText, Github, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
+  const { openResume } = useSite();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -48,13 +50,12 @@ export function Footer() {
             >
               <Github size={16} />
             </a>
-            <a
-              href="/resume.pdf"
-              download="CV_Nasywa_Chonifahtun_Fiqrihiyah.pdf"
-              className="inline-flex items-center gap-2 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 text-xs font-semibold text-[#172033] hover:bg-[#8CC0EB]"
+            <button
+              onClick={openResume}
+              className="inline-flex items-center gap-2 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 text-xs font-semibold text-[#172033] hover:bg-[#8CC0EB] cursor-pointer"
             >
               <FileText size={14} /> Resume
-            </a>
+            </button>
             <button
               onClick={scrollToTop}
               className="grid h-10 w-10 place-items-center rounded-full border border-[#8CC0EB]/50 bg-background text-foreground transition-all hover:bg-mist"
