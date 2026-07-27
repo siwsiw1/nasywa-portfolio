@@ -46,7 +46,7 @@ export const sendContactEmail = createServerFn({ method: "POST" })
     const { name, email, subject, message } = data;
 
     const apiKey = process.env.RESEND_API_KEY;
-    const recipientEmail = process.env.TO_EMAIL || "nasywa.fiqrihiyah@gmail.com";
+    const recipientEmail = process.env.TO_EMAIL || "nasywan044@gmail.com";
     const senderEmail = process.env.FROM_EMAIL || "onboarding@resend.dev";
 
     if (!apiKey) {
