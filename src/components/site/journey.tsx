@@ -113,106 +113,26 @@ export function Journey() {
         </Reveal>
 
         {/* Hero Narrative Section */}
-        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-foreground">
-                How I got here —
-                <br />
-                <span className="italic text-[#8CC0EB] font-normal">
-                  and where I am going next.
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-6 text-base sm:text-lg leading-relaxed text-foreground/85 max-w-2xl">
-                <T
-                  en="My journey is an evolving progression from exploring technical foundations, engineering software, managing data, gaining professional experience, and discovering my long-term direction."
-                  id="Perjalanan saya adalah perkembangan dinamis dari mengeksplorasi fondasi teknis, merancang perangkat lunak, mengolah data, mendapatkan pengalaman profesional, hingga menemukan arah tujuan jangka panjang."
-                />
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-5 flex items-end">
-            {/* Active Transition Status Card */}
-            <Reveal delay={150}>
-              <div className="w-full rounded-2xl border border-[#8CC0EB] bg-[#AEE2FF]/20 dark:bg-[#8CC0EB]/10 p-6 shadow-xs backdrop-blur-sm">
-                <div className="flex items-center gap-2.5 font-mono text-[0.65rem] font-bold tracking-[0.24em] text-[#172033] dark:text-[#AEE2FF]">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8CC0EB] opacity-75" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#8CC0EB]" />
-                  </span>
-                  CURRENT ACTIVE STAGE
-                </div>
-                <h3 className="mt-3 font-serif text-xl font-bold tracking-tight text-foreground">
-                  Transitioning Toward Industry Impact
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-foreground/80">
-                  <T
-                    en="Building toward professional opportunities in AI, Data, and Software Engineering — translating academic learning into production-ready skills."
-                    id="Membangun peluang profesional di bidang AI, Data, dan Software Engineering — menerjemahkan pembelajaran akademik menjadi keahlian siap industri."
-                  />
-                </p>
-                <div className="mt-4 flex flex-wrap items-center gap-2 pt-2 border-t border-[#8CC0EB]/30">
-                  <span className="rounded-md border border-[#8CC0EB]/40 bg-background/80 px-2.5 py-1 font-mono text-[0.62rem] font-semibold text-[#172033] dark:text-[#F4F1EA]">
-                    AI & RAG Systems
-                  </span>
-                  <span className="rounded-md border border-[#8CC0EB]/40 bg-background/80 px-2.5 py-1 font-mono text-[0.62rem] font-semibold text-[#172033] dark:text-[#F4F1EA]">
-                    Backend & Data
-                  </span>
-                  <span className="rounded-md border border-[#8CC0EB]/40 bg-background/80 px-2.5 py-1 font-mono text-[0.62rem] font-semibold text-[#172033] dark:text-[#F4F1EA]">
-                    Open for Internship
-                  </span>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+        <div className="mt-10 max-w-3xl">
+          <Reveal>
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-foreground">
+              How I got here —
+              <br />
+              <span className="italic text-[#8CC0EB] font-normal">and where I am going next.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed text-foreground/85">
+              <T
+                en="My journey is an evolving progression from exploring technical foundations, engineering software, managing data, gaining professional experience, and discovering my long-term direction."
+                id="Perjalanan saya adalah perkembangan dinamis dari mengeksplorasi fondasi teknis, merancang perangkat lunak, mengolah data, mendapatkan pengalaman profesional, hingga menemukan arah tujuan jangka panjang."
+              />
+            </p>
+          </Reveal>
         </div>
 
-        {/* Growth Story Progression Indicator */}
-        <Reveal delay={200}>
-          <div className="mt-14 rounded-2xl border border-border/80 bg-mist/60 p-6 sm:p-8">
-            <div className="font-mono text-[0.65rem] font-bold tracking-[0.28em] text-[#8CC0EB] uppercase">
-              GROWTH TRAJECTORY & ROADMAP
-            </div>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {[
-                { stage: "01 / LEARN", text: "Informatics Foundations & AI Core", year: "2024" },
-                {
-                  stage: "02 / EXPLORE",
-                  text: "Web Dev & Cross-Functional Work",
-                  year: "2024 – 2025",
-                },
-                {
-                  stage: "03 / BUILD",
-                  text: "RAG, Vision & Decision Backend",
-                  year: "2025 – 2026",
-                },
-                {
-                  stage: "04 / APPLY",
-                  text: "Talent Acquisition & Data Operations",
-                  year: "2025 – 2026",
-                },
-                { stage: "05 / GROW", text: "Focusing on AI, Data & Systems", year: "Present" },
-              ].map((st) => (
-                <div
-                  key={st.stage}
-                  className="relative rounded-xl border border-[#8CC0EB]/30 bg-background/90 p-4 transition-all duration-300 hover:border-[#8CC0EB]"
-                >
-                  <div className="flex items-center justify-between font-mono text-[0.6rem] font-bold tracking-[0.2em] text-[#8CC0EB]">
-                    <span>{st.stage}</span>
-                    <span className="text-muted-foreground">{st.year}</span>
-                  </div>
-                  <div className="mt-2 text-xs font-semibold text-foreground">{st.text}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
         {/* LAYER A: EDUCATION */}
-        <div className="mt-20">
+        <div className="mt-16">
           <Reveal>
             <div className="flex items-center gap-3 border-b border-border/60 pb-4">
               <GraduationCap size={20} className="text-[#8CC0EB]" />

@@ -262,136 +262,32 @@ export function Proof() {
         </Reveal>
 
         {/* Narrative Intro */}
-        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-foreground">
-                Proof of exploration,
-                <br />
-                <span className="italic text-[#8CC0EB] font-normal">
-                  learning, and achievement.
-                </span>
-              </h2>
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="mt-6 text-base sm:text-lg leading-relaxed text-foreground/85 max-w-2xl">
-                <T
-                  en="A curated evidence archive of certifications, hackathon achievements, competitions, and technical credentials supporting my work in AI, Data, and Software Development."
-                  id="Koleksi bukti terkurasi dari sertifikasi, pencapaian hackathon, kompetisi, dan kredensial teknis yang mendukung karya saya di bidang AI, Data, dan Software."
-                />
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-5 flex items-end">
-            <Reveal delay={150}>
-              <div className="w-full rounded-2xl border border-[#8CC0EB] bg-[#AEE2FF]/20 dark:bg-[#8CC0EB]/10 p-6 shadow-xs backdrop-blur-sm">
-                <div className="flex items-center gap-2 font-mono text-[0.62rem] font-bold tracking-[0.24em] text-[#172033] dark:text-[#AEE2FF] uppercase">
-                  <Sparkles size={14} className="text-[#8CC0EB]" />
-                  EVIDENCE CONNECTIVITY
-                </div>
-                <div className="mt-3 grid grid-cols-3 gap-2 text-center font-mono text-[0.6rem]">
-                  <div className="rounded-lg border border-[#8CC0EB]/40 bg-background/80 p-2">
-                    <div className="font-bold text-[#172033] dark:text-[#F4F1EA]">PROJECTS</div>
-                    <div className="text-[0.55rem] text-muted-foreground mt-0.5">What I Built</div>
-                  </div>
-                  <div className="rounded-lg border border-[#8CC0EB]/40 bg-background/80 p-2">
-                    <div className="font-bold text-[#172033] dark:text-[#F4F1EA]">TOOLKIT</div>
-                    <div className="text-[0.55rem] text-muted-foreground mt-0.5">
-                      What I Work With
-                    </div>
-                  </div>
-                  <div className="rounded-lg border border-[#8CC0EB] bg-[#AEE2FF]/40 dark:bg-[#8CC0EB]/30 p-2">
-                    <div className="font-bold text-[#172033] dark:text-[#F4F1EA]">PROOF</div>
-                    <div className="text-[0.55rem] text-[#8CC0EB] font-bold mt-0.5">Evidence</div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-
-        {/* FEATURED PROOF HIGHLIGHTS */}
-        <div className="mt-16">
+        <div className="mt-10 max-w-3xl">
           <Reveal>
-            <div className="flex items-center gap-3 border-b border-border/60 pb-4">
-              <Trophy size={18} className="text-[#8CC0EB]" />
-              <h3 className="font-mono text-xs font-bold tracking-[0.28em] text-[#8CC0EB] uppercase">
-                FEATURED HIGHLIGHTS & KEY CREDENTIALS
-              </h3>
-            </div>
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em] text-foreground">
+              Proof of exploration,
+              <br />
+              <span className="italic text-[#8CC0EB] font-normal">learning, and achievement.</span>
+            </h2>
           </Reveal>
-
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredItems.map((item, idx) => (
-              <Reveal key={item.id} delay={idx * 60}>
-                <div
-                  onClick={() => setSelectedProof(item)}
-                  data-hover="INSPECT"
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-[#8CC0EB]/60 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 p-6 shadow-xs backdrop-blur-sm transition-all duration-300 hover:border-[#8CC0EB] hover:shadow-md cursor-pointer"
-                >
-                  <div>
-                    <div className="flex items-center justify-between font-mono text-[0.6rem] font-bold">
-                      <span className="rounded-full bg-[#AEE2FF]/60 dark:bg-[#8CC0EB]/20 border border-[#8CC0EB]/40 px-2.5 py-0.5 text-[#172033] dark:text-[#F4F1EA]">
-                        {item.statusBadge || item.category}
-                      </span>
-                      {item.isOngoing ? (
-                        <span className="flex items-center gap-1 text-[#8CC0EB] font-bold animate-pulse">
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#8CC0EB]" /> ONGOING
-                        </span>
-                      ) : (
-                        item.year && <span className="text-[#8CC0EB]">{item.year}</span>
-                      )}
-                    </div>
-
-                    <div className="mt-3 font-mono text-[0.62rem] font-semibold text-[#8CC0EB]">
-                      {item.issuer}
-                    </div>
-
-                    <h4 className="mt-2 font-serif text-xl font-bold tracking-tight text-foreground group-hover:text-[#8CC0EB] transition-colors">
-                      {item.title}
-                    </h4>
-
-                    {item.certImageUrl && (
-                      <div className="mt-3 flex items-center gap-1.5 font-mono text-[0.58rem] font-bold text-[#172033] dark:text-[#F4F1EA] bg-[#AEE2FF]/40 dark:bg-[#8CC0EB]/20 border border-[#8CC0EB]/40 rounded-lg px-2.5 py-1 w-fit">
-                        <FileText size={12} className="text-[#8CC0EB]" /> DOCUMENT ATTACHED
-                      </div>
-                    )}
-
-                    <p className="mt-3 text-xs leading-relaxed text-foreground/80 line-clamp-3">
-                      <T en={item.desc.en} id={item.desc.id} />
-                    </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-[#8CC0EB]/30 flex items-center justify-between">
-                    <div className="flex flex-wrap gap-1">
-                      {item.techTags?.slice(0, 2).map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-[#8CC0EB]/30 bg-background/80 px-2 py-0.5 font-mono text-[0.56rem] text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <span className="font-mono text-xs font-semibold text-[#8CC0EB] group-hover:underline flex items-center gap-1">
-                      Inspect ↗
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={100}>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed text-foreground/85">
+              <T
+                en="A curated evidence archive of certifications, hackathon achievements, competitions, and technical credentials supporting my work in AI, Data, and Software Development."
+                id="Koleksi bukti terkurasi dari sertifikasi, pencapaian hackathon, kompetisi, dan kredensial teknis yang mendukung karya saya di bidang AI, Data, dan Software."
+              />
+            </p>
+          </Reveal>
         </div>
 
-        {/* FULL ARCHIVE & FILTER SYSTEM */}
-        <div className="mt-24 border-t border-border pt-16">
+        {/* VERIFIED CREDENTIAL LIBRARY & FILTER SYSTEM */}
+        <div className="mt-12 border-t border-border pt-12">
           <Reveal>
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/60 pb-6">
               <div className="flex items-center gap-3">
                 <Award size={18} className="text-[#8CC0EB]" />
                 <h3 className="font-mono text-xs font-bold tracking-[0.28em] text-[#8CC0EB] uppercase">
-                  VERIFIED CREDENTIAL ARCHIVE
+                  VERIFIED CREDENTIALS & PROOF
                 </h3>
               </div>
 
@@ -426,22 +322,28 @@ export function Proof() {
             </div>
           </Reveal>
 
-          {/* Archive Grid */}
+          {/* Evidence Cards Grid */}
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {displayedArchive.map((item, idx) => (
               <Reveal key={item.id} delay={idx * 50}>
                 <div
                   onClick={() => setSelectedProof(item)}
                   data-hover="INSPECT"
-                  className="group flex h-full flex-col justify-between rounded-xl border border-border/80 bg-[#FEF9F2]/70 dark:bg-[#172331]/70 p-6 transition-all duration-300 hover:border-[#8CC0EB] hover:shadow-xs cursor-pointer"
+                  className={`group flex h-full flex-col justify-between rounded-xl p-6 transition-all duration-300 cursor-pointer ${
+                    item.isFeatured
+                      ? "border border-[#8CC0EB]/70 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 shadow-xs hover:border-[#8CC0EB] hover:shadow-md"
+                      : "border border-border/80 bg-[#FEF9F2]/70 dark:bg-[#172331]/70 hover:border-[#8CC0EB]/60 hover:shadow-xs"
+                  }`}
                 >
                   <div>
-                    <div className="flex items-center justify-between font-mono text-[0.6rem] font-semibold text-[#64748B]">
-                      <span className="rounded bg-[#AEE2FF]/40 px-2 py-0.5 text-[#172033] dark:text-[#F4F1EA]">
-                        {item.category}
+                    <div className="flex items-center justify-between font-mono text-[0.6rem] font-bold">
+                      <span className="rounded-full bg-[#AEE2FF]/60 dark:bg-[#8CC0EB]/20 border border-[#8CC0EB]/40 px-2.5 py-0.5 text-[#172033] dark:text-[#F4F1EA]">
+                        {item.statusBadge || item.category}
                       </span>
                       {item.isOngoing ? (
-                        <span className="text-[#8CC0EB] font-bold">ONGOING</span>
+                        <span className="flex items-center gap-1 text-[#8CC0EB] font-bold animate-pulse">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#8CC0EB]" /> ONGOING
+                        </span>
                       ) : (
                         item.year && <span className="text-[#8CC0EB]">{item.year}</span>
                       )}
@@ -451,17 +353,17 @@ export function Proof() {
                       {item.issuer}
                     </div>
 
-                    <h4 className="mt-2 font-serif text-lg font-bold tracking-tight text-foreground group-hover:text-[#8CC0EB] transition-colors">
+                    <h4 className="mt-2 font-serif text-lg sm:text-xl font-bold tracking-tight text-foreground group-hover:text-[#8CC0EB] transition-colors">
                       {item.title}
                     </h4>
 
                     {item.certImageUrl && (
                       <div className="mt-2.5 flex items-center gap-1.5 font-mono text-[0.56rem] font-bold text-[#172033] dark:text-[#F4F1EA] bg-[#AEE2FF]/30 dark:bg-[#8CC0EB]/20 border border-[#8CC0EB]/30 rounded-md px-2 py-0.5 w-fit">
-                        <FileText size={11} className="text-[#8CC0EB]" /> VERIFIED IMAGE
+                        <FileText size={11} className="text-[#8CC0EB]" /> VERIFIED DOCUMENT
                       </div>
                     )}
 
-                    <p className="mt-2.5 text-xs leading-relaxed text-foreground/80 line-clamp-2">
+                    <p className="mt-2.5 text-xs leading-relaxed text-foreground/80 line-clamp-3">
                       <T en={item.desc.en} id={item.desc.id} />
                     </p>
                   </div>
@@ -470,7 +372,7 @@ export function Proof() {
                     <span className="font-mono text-[0.58rem] text-muted-foreground">
                       Verified Credential
                     </span>
-                    <span className="font-mono text-xs font-semibold text-[#8CC0EB]">
+                    <span className="font-mono text-xs font-semibold text-[#8CC0EB] group-hover:underline">
                       Inspect ↗
                     </span>
                   </div>

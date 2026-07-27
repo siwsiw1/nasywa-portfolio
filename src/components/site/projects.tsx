@@ -247,8 +247,7 @@ const secondaryProjects: SecondaryProject[] = [
 export function Projects() {
   const [selectedFilter, setSelectedFilter] = useState<FilterCategory>("ALL");
   const [activeProject, setActiveProject] = useState<FeaturedProject | null>(null);
-  const [showAllFeatured, setShowAllFeatured] = useState(false);
-  const [showAllSecondary, setShowAllSecondary] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   useEffect(() => {
     if (!activeProject) return;
@@ -261,24 +260,15 @@ export function Projects() {
     };
   }, [activeProject]);
 
-  const filteredFeatured = featuredProjects.filter((p) =>
+  const filteredProjects = featuredProjects.filter((p) =>
     selectedFilter === "ALL" ? true : p.filterCategory.includes(selectedFilter),
   );
 
-  const filteredSecondary = secondaryProjects.filter((p) =>
-    selectedFilter === "ALL" ? true : p.filterCategory.includes(selectedFilter),
-  );
+  const INITIAL_PROJECTS_LIMIT = 3;
 
-  const INITIAL_FEATURED_LIMIT = 3;
-  const INITIAL_SECONDARY_LIMIT = 3;
-
-  const displayedFeatured = showAllFeatured
-    ? filteredFeatured
-    : filteredFeatured.slice(0, INITIAL_FEATURED_LIMIT);
-
-  const displayedSecondary = showAllSecondary
-    ? filteredSecondary
-    : filteredSecondary.slice(0, INITIAL_SECONDARY_LIMIT);
+  const displayedProjects = showAllProjects
+    ? filteredProjects
+    : filteredProjects.slice(0, INITIAL_PROJECTS_LIMIT);
 
   return (
     <section id="projects" className="scroll-mt-24 border-t border-border py-24 md:py-32">
@@ -325,8 +315,7 @@ export function Projects() {
                   key={cat}
                   onClick={() => {
                     setSelectedFilter(cat);
-                    setShowAllFeatured(false);
-                    setShowAllSecondary(false);
+                    setShowAllProjects(false);
                   }}
                   data-hover="SELECT"
                   className={`rounded-full px-4 py-1.5 font-mono text-xs font-semibold transition-all cursor-pointer ${
@@ -342,9 +331,9 @@ export function Projects() {
           </div>
         </Reveal>
 
-        {/* Featured Projects Grid */}
+        {/* Projects Grid */}
         <div className="mt-14 space-y-16">
-          {displayedFeatured.map((project, idx) => (
+          {displayedProjects.map((project, idx) => (
             <Reveal key={project.id} delay={idx * 60}>
               <div className="group relative rounded-2xl border border-[#8CC0EB]/50 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 p-6 sm:p-8 md:p-10 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#8CC0EB] hover:shadow-md">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
@@ -455,114 +444,24 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Featured Projects Expand Button */}
-        {filteredFeatured.length > INITIAL_FEATURED_LIMIT && (
+        {/* Projects Expand Button */}
+        {filteredProjects.length > INITIAL_PROJECTS_LIMIT && (
           <div className="mt-12 flex justify-center">
             <button
-              onClick={() => setShowAllFeatured((prev) => !prev)}
-              data-hover={showAllFeatured ? "LESS" : "MORE"}
+              onClick={() => setShowAllProjects((prev) => !prev)}
+              data-hover={showAllProjects ? "LESS" : "MORE"}
               className="inline-flex items-center gap-2.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF]/40 dark:bg-[#172331] px-6 py-3 font-mono text-xs font-bold text-[#172033] dark:text-[#F4F1EA] shadow-xs transition-all duration-300 hover:bg-[#AEE2FF] hover:border-[#8CC0EB] hover:shadow-md cursor-pointer"
             >
-              {showAllFeatured ? (
+              {showAllProjects ? (
                 <>
-                  SHOW LESS CASE STUDIES <ChevronUp size={15} />
+                  SHOW LESS PROJECTS <ChevronUp size={15} />
                 </>
               ) : (
                 <>
-                  VIEW ALL CASE STUDIES ({filteredFeatured.length}) <ChevronDown size={15} />
+                  VIEW ALL PROJECTS ({filteredProjects.length}) <ChevronDown size={15} />
                 </>
               )}
             </button>
-          </div>
-        )}
-
-        {/* Secondary Project Archive */}
-        {filteredSecondary.length > 0 && (
-          <div className="mt-24 border-t border-border pt-16">
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <Layers size={16} className="text-[#8CC0EB]" />
-                <h3 className="font-mono text-xs font-bold tracking-[0.28em] text-[#8CC0EB] uppercase">
-                  SECONDARY EXPLORATIONS & ARCHIVE
-                </h3>
-              </div>
-            </Reveal>
-
-            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {displayedSecondary.map((sec, i) => (
-                <Reveal key={sec.id} delay={i * 60}>
-                  <div className="group flex h-full flex-col justify-between rounded-xl border border-[#8CC0EB]/40 bg-[#FEF9F2]/70 dark:bg-[#172331]/70 p-6 transition-all duration-300 hover:border-[#8CC0EB] hover:shadow-md">
-                    <div>
-                      <div className="flex items-center justify-between font-mono text-[0.6rem] font-semibold tracking-[0.2em] text-[#64748B]">
-                        <span className="rounded bg-[#AEE2FF]/40 px-2 py-0.5 text-[#172033] dark:text-[#F4F1EA]">
-                          {sec.note}
-                        </span>
-                        <span className="text-[#8CC0EB]">{sec.year}</span>
-                      </div>
-
-                      <div className="mt-3 font-mono text-[0.6rem] font-semibold tracking-[0.18em] text-[#8CC0EB]">
-                        {sec.domain}
-                      </div>
-
-                      <h4 className="mt-2 font-serif text-xl font-bold tracking-tight text-foreground group-hover:text-[#8CC0EB] transition-colors">
-                        {sec.title}
-                      </h4>
-
-                      <p className="mt-2.5 text-xs leading-relaxed text-foreground/80">
-                        {sec.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-6 border-t border-[#8CC0EB]/30 pt-4 flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex flex-wrap gap-1">
-                        {sec.stack.map((s) => (
-                          <span
-                            key={s}
-                            className="rounded-full border border-[#8CC0EB]/30 bg-background/60 px-2 py-0.5 font-mono text-[0.58rem] text-muted-foreground"
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-
-                      {sec.githubUrl && (
-                        <a
-                          href={sec.githubUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          data-hover="GITHUB"
-                          className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-[#8CC0EB] hover:underline"
-                        >
-                          Repo <ArrowUpRight size={12} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* Secondary Archive Expand Button */}
-            {filteredSecondary.length > INITIAL_SECONDARY_LIMIT && (
-              <div className="mt-12 flex justify-center">
-                <button
-                  onClick={() => setShowAllSecondary((prev) => !prev)}
-                  data-hover={showAllSecondary ? "LESS" : "MORE"}
-                  className="inline-flex items-center gap-2.5 rounded-full border border-[#8CC0EB] bg-[#EAF6FD] dark:bg-[#172331] px-6 py-3 font-mono text-xs font-bold text-[#172033] dark:text-[#F4F1EA] shadow-xs transition-all duration-300 hover:bg-[#AEE2FF] hover:border-[#8CC0EB] hover:shadow-md cursor-pointer"
-                >
-                  {showAllSecondary ? (
-                    <>
-                      SHOW LESS ARCHIVE <ChevronUp size={15} />
-                    </>
-                  ) : (
-                    <>
-                      SEE ALL ARCHIVED PROJECTS ({filteredSecondary.length}){" "}
-                      <ChevronDown size={15} />
-                    </>
-                  )}
-                </button>
-              </div>
-            )}
           </div>
         )}
       </div>
