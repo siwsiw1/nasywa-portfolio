@@ -37,53 +37,53 @@
   --radius: 0.5rem;
 
   /* Light — warm field journal foundation + soft blue tech layers */
-  --background: #FEF9F2;
+  --background: #fef9f2;
   --foreground: #172033;
   --ink: #172033;
-  --surface: #FEF9F2;
-  --mist: #EAF6FD;            /* Soft blue mist surface */
-  --card: #FEF9F2;
+  --surface: #fef9f2;
+  --mist: #eaf6fd; /* Soft blue mist surface */
+  --card: #fef9f2;
   --card-foreground: #172033;
-  --popover: #FEF9F2;
+  --popover: #fef9f2;
   --popover-foreground: #172033;
-  --muted: #F3ECE2;
-  --muted-foreground: #64748B;
-  --primary: #AEE2FF;         /* Primary blue accent */
+  --muted: #f3ece2;
+  --muted-foreground: #64748b;
+  --primary: #aee2ff; /* Primary blue accent */
   --primary-foreground: #172033;
-  --secondary: #8CC0EB;       /* Secondary blue accent */
+  --secondary: #8cc0eb; /* Secondary blue accent */
   --secondary-foreground: #172033;
-  --accent: #AEE2FF;
+  --accent: #aee2ff;
   --accent-foreground: #172033;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: rgba(23, 32, 51, 0.12);
   --input: rgba(23, 32, 51, 0.14);
-  --ring: #8CC0EB;
+  --ring: #8cc0eb;
 }
 
 .dark {
   --background: #101820;
-  --foreground: #F4F1EA;
-  --ink: #F4F1EA;
+  --foreground: #f4f1ea;
+  --ink: #f4f1ea;
   --surface: #172331;
-  --mist: #172331;            /* Dark mode surface mist */
+  --mist: #172331; /* Dark mode surface mist */
   --card: #172331;
-  --card-foreground: #F4F1EA;
+  --card-foreground: #f4f1ea;
   --popover: #172331;
-  --popover-foreground: #F4F1EA;
+  --popover-foreground: #f4f1ea;
   --muted: #1e2c3d;
-  --muted-foreground: #94A3B8;
-  --primary: #AEE2FF;
+  --muted-foreground: #94a3b8;
+  --primary: #aee2ff;
   --primary-foreground: #101820;
-  --secondary: #8CC0EB;
+  --secondary: #8cc0eb;
   --secondary-foreground: #101820;
-  --accent: #AEE2FF;
+  --accent: #aee2ff;
   --accent-foreground: #101820;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: rgba(244, 241, 234, 0.12);
   --input: rgba(244, 241, 234, 0.14);
-  --ring: #AEE2FF;
+  --ring: #aee2ff;
 }
 
 @layer base {
@@ -124,31 +124,61 @@
 
 /* Subtle floating motion for map nodes */
 @keyframes float-a {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(4px, -6px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(4px, -6px);
+  }
 }
 @keyframes float-b {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-5px, 4px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5px, 4px);
+  }
 }
 @keyframes float-c {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(3px, 5px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(3px, 5px);
+  }
 }
 @keyframes pulse-soft {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-.float-a { animation: float-a 7s ease-in-out infinite; }
-.float-b { animation: float-b 9s ease-in-out infinite; }
-.float-c { animation: float-c 8s ease-in-out infinite; }
-.pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }
+.float-a {
+  animation: float-a 7s ease-in-out infinite;
+}
+.float-b {
+  animation: float-b 9s ease-in-out infinite;
+}
+.float-c {
+  animation: float-c 8s ease-in-out infinite;
+}
+.pulse-soft {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
 
 .reveal {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
 }
 .reveal.is-visible {
   opacity: 1;
@@ -157,5 +187,8 @@
 
 /* Custom cursor */
 @media (hover: hover) and (pointer: fine) {
-  .cursor-none-all, .cursor-none-all * { cursor: none !important; }
+  .cursor-none-all,
+  .cursor-none-all * {
+    cursor: none !important;
+  }
 }

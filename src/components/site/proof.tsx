@@ -245,7 +245,7 @@ export function Proof() {
   const featuredItems = proofItems.filter((item) => item.isFeatured);
 
   const filteredArchive = proofItems.filter((item) =>
-    activeTab === "ALL" ? true : item.tabCategories.includes(activeTab)
+    activeTab === "ALL" ? true : item.tabCategories.includes(activeTab),
   );
 
   const INITIAL_ARCHIVE_LIMIT = 6;
@@ -297,7 +297,9 @@ export function Proof() {
                   </div>
                   <div className="rounded-lg border border-[#8CC0EB]/40 bg-background/80 p-2">
                     <div className="font-bold text-[#172033] dark:text-[#F4F1EA]">TOOLKIT</div>
-                    <div className="text-[0.55rem] text-muted-foreground mt-0.5">What I Work With</div>
+                    <div className="text-[0.55rem] text-muted-foreground mt-0.5">
+                      What I Work With
+                    </div>
                   </div>
                   <div className="rounded-lg border border-[#8CC0EB] bg-[#AEE2FF]/40 dark:bg-[#8CC0EB]/30 p-2">
                     <div className="font-bold text-[#172033] dark:text-[#F4F1EA]">PROOF</div>
@@ -395,25 +397,31 @@ export function Proof() {
 
               {/* Filter Tabs */}
               <div className="flex flex-wrap gap-2">
-                {(["ALL", "CERTIFICATIONS", "ACHIEVEMENTS", "COMPETITIONS", "LEARNING"] as FilterTab[]).map(
-                  (tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => {
-                        setActiveTab(tab);
-                        setShowAllArchive(false);
-                      }}
-                      data-hover="FILTER"
-                      className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${
-                        activeTab === tab
-                          ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
-                          : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
-                      }`}
-                    >
-                      {tab}
-                    </button>
-                  )
-                )}
+                {(
+                  [
+                    "ALL",
+                    "CERTIFICATIONS",
+                    "ACHIEVEMENTS",
+                    "COMPETITIONS",
+                    "LEARNING",
+                  ] as FilterTab[]
+                ).map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => {
+                      setActiveTab(tab);
+                      setShowAllArchive(false);
+                    }}
+                    data-hover="FILTER"
+                    className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${
+                      activeTab === tab
+                        ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
+                        : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
               </div>
             </div>
           </Reveal>

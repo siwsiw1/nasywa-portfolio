@@ -3,6 +3,7 @@ import { SectionLabel } from "./section-label";
 import { Reveal } from "./reveal";
 import { T, useSite } from "./theme-provider";
 import { Mail, Linkedin, Github, FileText, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { sendContactEmail } from "../../server/contact";
 
 export function Connect() {
   const { lang, openResume } = useSite();
@@ -18,6 +19,7 @@ export function Connect() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -29,7 +31,8 @@ export function Connect() {
     if (!formData.email.trim()) {
       errs.email = lang === "en" ? "Email is required." : "Email wajib diisi.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = lang === "en" ? "Please enter a valid email address." : "Masukkan alamat email yang valid.";
+      errs.email =
+        lang === "en" ? "Please enter a valid email address." : "Masukkan alamat email yang valid.";
     }
 
     if (!formData.message.trim()) {
@@ -40,20 +43,39 @@ export function Connect() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (!validate()) return;
 
     setIsSubmitting(true);
 
-    // Simulate clean form handling
-    setTimeout(() => {
+    try {
+      const res = await sendContactEmail({ data: formData });
+
+      if (res.success) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
+        setSubmitError(null);
+      } else {
+        setSubmitError(
+          res.error ||
+            (lang === "en"
+              ? "Something went wrong. Please try again or contact me directly by email."
+              : "Ada masalah. Silakan coba lagi atau hubungi saya langsung melalui email."),
+        );
+      }
+    } catch {
+      setSubmitError(
+        lang === "en"
+          ? "Something went wrong. Please try again or contact me directly by email."
+          : "Ada masalah. Silakan coba lagi atau hubungi saya langsung melalui email.",
+      );
+    } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setErrors({});
-    }, 600);
+    }
   };
 
   return (
@@ -134,8 +156,12 @@ export function Connect() {
                       <Linkedin size={16} />
                     </div>
                     <div>
-                      <div className="font-mono text-[0.6rem] font-semibold text-muted-foreground">LINKEDIN</div>
-                      <div className="font-mono text-xs font-medium text-foreground truncate max-w-[150px]">nasywa-chonifahtun-fiqrihiyah</div>
+                      <div className="font-mono text-[0.6rem] font-semibold text-muted-foreground">
+                        LINKEDIN
+                      </div>
+                      <div className="font-mono text-xs font-medium text-foreground truncate max-w-[150px]">
+                        nasywa-chonifahtun-fiqrihiyah
+                      </div>
                     </div>
                   </a>
 
@@ -149,7 +175,9 @@ export function Connect() {
                       <Github size={16} />
                     </div>
                     <div>
-                      <div className="font-mono text-[0.6rem] font-semibold text-muted-foreground">GITHUB</div>
+                      <div className="font-mono text-[0.6rem] font-semibold text-muted-foreground">
+                        GITHUB
+                      </div>
                       <div className="font-mono text-xs font-medium text-foreground">siwsiw1</div>
                     </div>
                   </a>
@@ -190,8 +218,8 @@ export function Connect() {
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground">
                       <T
-                        en="Thank you for reaching out. I'll get back to you as soon as possible."
-                        id="Terima kasih telah menghubungi. Saya akan segera membalas pesan Anda."
+                        en="Message sent successfully. I'll get back to you soon."
+                        id="Pesan berhasil dikirim. Saya akan segera membalas pesan Anda."
                       />
                     </p>
                     <button
@@ -203,9 +231,18 @@ export function Connect() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="mt-6 space-y-5" noValidate>
+                    {submitError && (
+                      <div className="rounded-lg border border-destructive/40 bg-destructive/10 p-3.5 text-xs font-medium text-destructive flex items-start gap-2.5">
+                        <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                        <span>{submitError}</span>
+                      </div>
+                    )}
                     {/* Name */}
                     <div>
-                      <label htmlFor="name" className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground">
+                      <label
+                        htmlFor="name"
+                        className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground"
+                      >
                         <T en="NAME *" id="NAMA *" />
                       </label>
                       <input
@@ -214,7 +251,9 @@ export function Connect() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className={`mt-1.5 w-full rounded-lg border bg-background px-4 py-3 text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-[#8CC0EB] ${
-                          errors.name ? "border-destructive focus:ring-destructive" : "border-border/80 hover:border-[#8CC0EB]/60"
+                          errors.name
+                            ? "border-destructive focus:ring-destructive"
+                            : "border-border/80 hover:border-[#8CC0EB]/60"
                         }`}
                         placeholder={lang === "en" ? "Your name" : "Nama Anda"}
                       />
@@ -227,7 +266,10 @@ export function Connect() {
 
                     {/* Email */}
                     <div>
-                      <label htmlFor="email" className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground">
+                      <label
+                        htmlFor="email"
+                        className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground"
+                      >
                         <T en="EMAIL *" id="EMAIL *" />
                       </label>
                       <input
@@ -236,7 +278,9 @@ export function Connect() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className={`mt-1.5 w-full rounded-lg border bg-background px-4 py-3 text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-[#8CC0EB] ${
-                          errors.email ? "border-destructive focus:ring-destructive" : "border-border/80 hover:border-[#8CC0EB]/60"
+                          errors.email
+                            ? "border-destructive focus:ring-destructive"
+                            : "border-border/80 hover:border-[#8CC0EB]/60"
                         }`}
                         placeholder="you@example.com"
                       />
@@ -249,7 +293,10 @@ export function Connect() {
 
                     {/* Subject */}
                     <div>
-                      <label htmlFor="subject" className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground">
+                      <label
+                        htmlFor="subject"
+                        className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground"
+                      >
                         <T en="SUBJECT" id="SUBJEK" />
                       </label>
                       <input
@@ -258,13 +305,20 @@ export function Connect() {
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         className="mt-1.5 w-full rounded-lg border border-border/80 bg-background px-4 py-3 text-sm text-foreground transition-colors hover:border-[#8CC0EB]/60 focus:outline-none focus:ring-2 focus:ring-[#8CC0EB]"
-                        placeholder={lang === "en" ? "Internship Opportunity / Inquiry" : "Peluang Magang / Pertanyaan"}
+                        placeholder={
+                          lang === "en"
+                            ? "Internship Opportunity / Inquiry"
+                            : "Peluang Magang / Pertanyaan"
+                        }
                       />
                     </div>
 
                     {/* Message */}
                     <div>
-                      <label htmlFor="message" className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground">
+                      <label
+                        htmlFor="message"
+                        className="block font-mono text-[0.65rem] font-semibold tracking-[0.16em] text-foreground"
+                      >
                         <T en="MESSAGE *" id="PESAN *" />
                       </label>
                       <textarea
@@ -273,9 +327,15 @@ export function Connect() {
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className={`mt-1.5 w-full rounded-lg border bg-background px-4 py-3 text-sm text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-[#8CC0EB] ${
-                          errors.message ? "border-destructive focus:ring-destructive" : "border-border/80 hover:border-[#8CC0EB]/60"
+                          errors.message
+                            ? "border-destructive focus:ring-destructive"
+                            : "border-border/80 hover:border-[#8CC0EB]/60"
                         }`}
-                        placeholder={lang === "en" ? "Tell me about your team or project..." : "Ceritakan tentang tim atau proyek Anda..."}
+                        placeholder={
+                          lang === "en"
+                            ? "Tell me about your team or project..."
+                            : "Ceritakan tentang tim atau proyek Anda..."
+                        }
                       />
                       {errors.message && (
                         <div className="mt-1 flex items-center gap-1 font-mono text-xs text-destructive">
@@ -295,7 +355,10 @@ export function Connect() {
                       ) : (
                         <>
                           <T en="SEND MESSAGE" id="KIRIM PESAN" />
-                          <Send size={14} className="transition-transform group-hover:translate-x-0.5" />
+                          <Send
+                            size={14}
+                            className="transition-transform group-hover:translate-x-0.5"
+                          />
                         </>
                       )}
                     </button>

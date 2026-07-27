@@ -83,7 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Nasywa — Digital Explorer & Builder" },
       {
         property: "og:description",
-        content: "A quiet digital field journal of exploration, experiments, and things built while learning.",
+        content:
+          "A quiet digital field journal of exploration, experiments, and things built while learning.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

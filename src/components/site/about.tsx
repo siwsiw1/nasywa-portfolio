@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  Award,
-  GraduationCap,
-  RotateCw,
-} from "lucide-react";
+import { Award, GraduationCap, RotateCw } from "lucide-react";
 import { SectionLabel } from "./section-label";
 import { Reveal } from "./reveal";
 import { T } from "./theme-provider";
@@ -57,9 +53,7 @@ export function About() {
             <h2 className="font-serif text-[clamp(2.25rem,5.5vw,4.25rem)] font-medium leading-[1.05] tracking-[-0.02em] text-foreground">
               Curious by nature.
               <br />
-              <span className="italic text-[#8CC0EB] font-normal">
-                Building by practice.
-              </span>
+              <span className="italic text-[#8CC0EB] font-normal">Building by practice.</span>
             </h2>
           </Reveal>
 
@@ -131,14 +125,14 @@ export function About() {
                       <div className="flex w-full items-center justify-between">
                         <span
                           className={`font-mono text-[0.6rem] font-bold tracking-[0.22em] ${
-                            isActive ? "text-[#172033] dark:text-[#AEE2FF]" : "text-muted-foreground"
+                            isActive
+                              ? "text-[#172033] dark:text-[#AEE2FF]"
+                              : "text-muted-foreground"
                           }`}
                         >
                           {s.stage}
                         </span>
-                        {isActive && (
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#8CC0EB]" />
-                        )}
+                        {isActive && <span className="h-1.5 w-1.5 rounded-full bg-[#8CC0EB]" />}
                       </div>
                       <span
                         className={`mt-2 font-serif text-lg font-bold tracking-tight md:text-xl ${

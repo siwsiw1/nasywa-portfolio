@@ -1,11 +1,4 @@
-import {
-  Code2,
-  Brain,
-  Server,
-  Database,
-  Wrench,
-  Globe,
-} from "lucide-react";
+import { Code2, Brain, Server, Database, Wrench, Globe } from "lucide-react";
 import { SectionLabel } from "./section-label";
 import { Reveal } from "./reveal";
 import { T } from "./theme-provider";
@@ -40,46 +33,25 @@ const toolkitCategories: Category[] = [
     id: "web-dev",
     icon: Globe,
     title: { en: "WEB & FRONTEND", id: "WEB & FRONTEND" },
-    tools: [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "React.js",
-      "Tailwind CSS",
-    ],
+    tools: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Tailwind CSS"],
   },
   {
     id: "backend-apis",
     icon: Server,
     title: { en: "BACKEND & APIs", id: "BACKEND & API" },
-    tools: [
-      "FastAPI",
-      "Flask",
-      "REST APIs",
-    ],
+    tools: ["FastAPI", "Flask", "REST APIs"],
   },
   {
     id: "databases",
     icon: Database,
     title: { en: "DATABASES", id: "DATABASE" },
-    tools: [
-      "MySQL",
-      "PostgreSQL",
-      "Supabase",
-    ],
+    tools: ["MySQL", "PostgreSQL", "Supabase"],
   },
   {
     id: "languages",
     icon: Code2,
     title: { en: "LANGUAGES", id: "BAHASA PEMROGRAMAN" },
-    tools: [
-      "Python",
-      "JavaScript",
-      "C++",
-      "Java",
-      "PHP",
-      "SQL",
-    ],
+    tools: ["Python", "JavaScript", "C++", "Java", "PHP", "SQL"],
   },
   {
     id: "tools-platforms",

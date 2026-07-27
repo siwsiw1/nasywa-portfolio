@@ -49,9 +49,7 @@ export function Nav() {
                 data-hover="NAV"
                 className="group relative text-xs lg:text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
               >
-                <span className="font-mono text-[0.6rem] text-[#8CC0EB] mr-1">
-                  {l.n}
-                </span>
+                <span className="font-mono text-[0.6rem] text-[#8CC0EB] mr-1">{l.n}</span>
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#8CC0EB] transition-all duration-300 group-hover:w-full" />
               </a>
@@ -74,7 +72,10 @@ export function Nav() {
             >
               <FileText size={12} />
               Resume
-              <ArrowUpRight size={12} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <ArrowUpRight
+                size={12}
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </button>
           </div>
 
@@ -95,7 +96,10 @@ export function Nav() {
             <span className="font-mono text-[0.65rem] font-bold tracking-[0.4em] text-foreground">
               CHAPTER INDEX
             </span>
-            <button onClick={() => setOpen(false)} className="grid h-9 w-9 place-items-center rounded-full border border-[#8CC0EB]/60 bg-mist">
+            <button
+              onClick={() => setOpen(false)}
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#8CC0EB]/60 bg-mist"
+            >
               <X size={16} />
             </button>
           </div>

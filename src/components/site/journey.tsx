@@ -102,7 +102,7 @@ export function Journey() {
   const [activeTab, setActiveTab] = useState<YearTab>("ALL");
 
   const filteredMilestones = milestonesList.filter(
-    (m) => activeTab === "ALL" || m.year === activeTab
+    (m) => activeTab === "ALL" || m.year === activeTab,
   );
 
   return (
@@ -179,9 +179,21 @@ export function Journey() {
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {[
                 { stage: "01 / LEARN", text: "Informatics Foundations & AI Core", year: "2024" },
-                { stage: "02 / EXPLORE", text: "Web Dev & Cross-Functional Work", year: "2024 – 2025" },
-                { stage: "03 / BUILD", text: "RAG, Vision & Decision Backend", year: "2025 – 2026" },
-                { stage: "04 / APPLY", text: "Talent Acquisition & Data Operations", year: "2025 – 2026" },
+                {
+                  stage: "02 / EXPLORE",
+                  text: "Web Dev & Cross-Functional Work",
+                  year: "2024 – 2025",
+                },
+                {
+                  stage: "03 / BUILD",
+                  text: "RAG, Vision & Decision Backend",
+                  year: "2025 – 2026",
+                },
+                {
+                  stage: "04 / APPLY",
+                  text: "Talent Acquisition & Data Operations",
+                  year: "2025 – 2026",
+                },
                 { stage: "05 / GROW", text: "Focusing on AI, Data & Systems", year: "Present" },
               ].map((st) => (
                 <div
@@ -192,9 +204,7 @@ export function Journey() {
                     <span>{st.stage}</span>
                     <span className="text-muted-foreground">{st.year}</span>
                   </div>
-                  <div className="mt-2 text-xs font-semibold text-foreground">
-                    {st.text}
-                  </div>
+                  <div className="mt-2 text-xs font-semibold text-foreground">{st.text}</div>
                 </div>
               ))}
             </div>
@@ -338,13 +348,15 @@ export function Journey() {
                       <li className="flex items-start gap-2.5">
                         <CheckCircle2 size={15} className="text-[#8CC0EB] shrink-0 mt-0.5" />
                         <span>
-                          Reviewed and verified <strong>900+ student resumes</strong> through the President University Information System.
+                          Reviewed and verified <strong>900+ student resumes</strong> through the
+                          President University Information System.
                         </span>
                       </li>
                       <li className="flex items-start gap-2.5">
                         <CheckCircle2 size={15} className="text-[#8CC0EB] shrink-0 mt-0.5" />
                         <span>
-                          Collaborated with the Talent Acquisition team to evaluate student career profiles and support career-readiness data analytics.
+                          Collaborated with the Talent Acquisition team to evaluate student career
+                          profiles and support career-readiness data analytics.
                         </span>
                       </li>
                     </ul>
@@ -355,9 +367,7 @@ export function Journey() {
                     <div className="flex items-center gap-2 font-mono text-[0.6rem] font-bold tracking-[0.2em] text-[#8CC0EB] uppercase">
                       <FileCheck size={14} /> IMPACT METRIC
                     </div>
-                    <div className="mt-2 font-serif text-3xl font-bold text-foreground">
-                      900+
-                    </div>
+                    <div className="mt-2 font-serif text-3xl font-bold text-foreground">900+</div>
                     <div className="mt-1 text-xs text-foreground/80 font-sans">
                       Student Resumes Reviewed & Verified via University Info System
                     </div>
@@ -397,13 +407,15 @@ export function Journey() {
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 size={15} className="text-[#8CC0EB] shrink-0 mt-0.5" />
                       <span>
-                        Maintained and enhanced the Setsail BizAccel website using ZOHO, Tailwind CSS, and JavaScript.
+                        Maintained and enhanced the Setsail BizAccel website using ZOHO, Tailwind
+                        CSS, and JavaScript.
                       </span>
                     </li>
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 size={15} className="text-[#8CC0EB] shrink-0 mt-0.5" />
                       <span>
-                        Collaborated across web development, multimedia, event operations, and documentation functions.
+                        Collaborated across web development, multimedia, event operations, and
+                        documentation functions.
                       </span>
                     </li>
                   </ul>
@@ -475,7 +487,8 @@ export function Journey() {
                     Role: Facilitator
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-foreground/80">
-                    Contributed to community workshops focused on English communication, resume building, and job interview readiness for aspiring talent.
+                    Contributed to community workshops focused on English communication, resume
+                    building, and job interview readiness for aspiring talent.
                   </p>
                 </div>
                 <div className="mt-6 border-t border-border/50 pt-3 flex items-center gap-1.5 font-mono text-[0.6rem] text-muted-foreground">
@@ -500,7 +513,8 @@ export function Journey() {
                     Role: Facilitator
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-foreground/80">
-                    Guided 200+ freshmen students in building modern digital resumes and optimizing their professional LinkedIn profiles.
+                    Guided 200+ freshmen students in building modern digital resumes and optimizing
+                    their professional LinkedIn profiles.
                   </p>
                 </div>
                 <div className="mt-6 border-t border-border/50 pt-3 flex items-center gap-1.5 font-mono text-[0.6rem] text-muted-foreground">
@@ -525,7 +539,8 @@ export function Journey() {
                     Role: PIC / Event Organizer
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-foreground/80">
-                    Led an educational creative workshop focused on video production and editing using CapCut and Canva for young participants.
+                    Led an educational creative workshop focused on video production and editing
+                    using CapCut and Canva for young participants.
                   </p>
                 </div>
                 <div className="mt-6 border-t border-border/50 pt-3 flex items-center gap-1.5 font-mono text-[0.6rem] text-muted-foreground">
@@ -555,10 +570,11 @@ export function Journey() {
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     data-hover="FILTER"
-                    className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${activeTab === tab
+                    className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${
+                      activeTab === tab
                         ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
                         : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
-                      }`}
+                    }`}
                   >
                     {tab}
                   </button>
@@ -572,10 +588,11 @@ export function Journey() {
             {filteredMilestones.map((m, idx) => (
               <Reveal key={idx} delay={idx * 50}>
                 <div
-                  className={`group relative flex h-full flex-col justify-between rounded-xl p-5 transition-all duration-300 ${m.highlight
+                  className={`group relative flex h-full flex-col justify-between rounded-xl p-5 transition-all duration-300 ${
+                    m.highlight
                       ? "border border-[#8CC0EB] bg-[#FEF9F2] dark:bg-[#172331] shadow-xs hover:shadow-md"
                       : "border border-border/80 bg-mist/40 hover:border-[#8CC0EB]/60"
-                    }`}
+                  }`}
                 >
                   <div>
                     <div className="flex items-center justify-between font-mono text-[0.62rem] font-bold">

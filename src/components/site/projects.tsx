@@ -262,11 +262,11 @@ export function Projects() {
   }, [activeProject]);
 
   const filteredFeatured = featuredProjects.filter((p) =>
-    selectedFilter === "ALL" ? true : p.filterCategory.includes(selectedFilter)
+    selectedFilter === "ALL" ? true : p.filterCategory.includes(selectedFilter),
   );
 
   const filteredSecondary = secondaryProjects.filter((p) =>
-    selectedFilter === "ALL" ? true : p.filterCategory.includes(selectedFilter)
+    selectedFilter === "ALL" ? true : p.filterCategory.includes(selectedFilter),
   );
 
   const INITIAL_FEATURED_LIMIT = 3;
@@ -301,7 +301,9 @@ export function Projects() {
           <div className="lg:col-span-5 flex items-end">
             <Reveal delay={120}>
               <p className="text-base sm:text-lg leading-relaxed text-foreground/85">
-                I build across AI, machine learning, computer vision, software development, web applications, and physical computing. Each project is a reflection of real problems explored and practical systems engineered.
+                I build across AI, machine learning, computer vision, software development, web
+                applications, and physical computing. Each project is a reflection of real problems
+                explored and practical systems engineered.
               </p>
             </Reveal>
           </div>
@@ -316,26 +318,26 @@ export function Projects() {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {(["ALL", "AI / ML", "COMPUTER VISION", "SOFTWARE", "ROBOTICS"] as FilterCategory[]).map(
-                (cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => {
-                      setSelectedFilter(cat);
-                      setShowAllFeatured(false);
-                      setShowAllSecondary(false);
-                    }}
-                    data-hover="SELECT"
-                    className={`rounded-full px-4 py-1.5 font-mono text-xs font-semibold transition-all cursor-pointer ${
-                      selectedFilter === cat
-                        ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
-                        : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                )
-              )}
+              {(
+                ["ALL", "AI / ML", "COMPUTER VISION", "SOFTWARE", "ROBOTICS"] as FilterCategory[]
+              ).map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setSelectedFilter(cat);
+                    setShowAllFeatured(false);
+                    setShowAllSecondary(false);
+                  }}
+                  data-hover="SELECT"
+                  className={`rounded-full px-4 py-1.5 font-mono text-xs font-semibold transition-all cursor-pointer ${
+                    selectedFilter === cat
+                      ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
+                      : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </div>
         </Reveal>
@@ -439,7 +441,7 @@ export function Projects() {
                       className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-[#8CC0EB]/60 bg-[#EAF6FD] dark:bg-[#101820] shadow-inner cursor-pointer"
                     >
                       <ProjectVisualCanvas type={project.visualType} title={project.title} />
-                      
+
                       <div className="absolute right-4 top-4 z-20 flex items-center gap-2">
                         <span className="rounded-full border border-[#8CC0EB]/60 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 px-3 py-1 font-mono text-[0.6rem] font-bold tracking-[0.2em] text-[#172033] dark:text-[#F4F1EA] backdrop-blur shadow-xs">
                           INTERACTIVE PREVIEW
@@ -554,7 +556,8 @@ export function Projects() {
                     </>
                   ) : (
                     <>
-                      SEE ALL ARCHIVED PROJECTS ({filteredSecondary.length}) <ChevronDown size={15} />
+                      SEE ALL ARCHIVED PROJECTS ({filteredSecondary.length}){" "}
+                      <ChevronDown size={15} />
                     </>
                   )}
                 </button>
@@ -572,109 +575,302 @@ export function Projects() {
   );
 }
 
-{/* Custom Technical SVG Visual Canvas Component */}
+{
+  /* Custom Technical SVG Visual Canvas Component */
+}
 function ProjectVisualCanvas({ type, title }: { type: string; title: string }) {
   return (
     <div className="relative h-full w-full select-none">
       <div className="absolute inset-0 bg-gradient-to-br from-[#EAF6FD] via-[#FEF9F2]/80 to-[#AEE2FF]/30 dark:from-[#172331] dark:to-[#101820]" />
-      
+
       <svg viewBox="0 0 800 500" className="relative z-10 h-full w-full" aria-hidden="true">
         <defs>
           <pattern id={`grid-${type}`} width="28" height="28" patternUnits="userSpaceOnUse">
-            <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#8CC0EB" strokeWidth="0.5" opacity="0.22" />
+            <path
+              d="M 28 0 L 0 0 0 28"
+              fill="none"
+              stroke="#8CC0EB"
+              strokeWidth="0.5"
+              opacity="0.22"
+            />
           </pattern>
         </defs>
         <rect width="800" height="500" fill={`url(#grid-${type})`} />
 
         {/* Top Header Telemetry */}
-        <text x="24" y="36" className="fill-[#172033]/70 dark:fill-[#F4F1EA]/70 font-mono text-[10px] font-bold" letterSpacing="2">
+        <text
+          x="24"
+          y="36"
+          className="fill-[#172033]/70 dark:fill-[#F4F1EA]/70 font-mono text-[10px] font-bold"
+          letterSpacing="2"
+        >
           SYSTEM_CANVAS :: {title.toUpperCase().replace(/\s+/g, "_")}
         </text>
-        <text x="630" y="36" className="fill-[#8CC0EB] font-mono text-[10px] font-bold" letterSpacing="1.5">
+        <text
+          x="630"
+          y="36"
+          className="fill-[#8CC0EB] font-mono text-[10px] font-bold"
+          letterSpacing="1.5"
+        >
           STATUS: VERIFIED
         </text>
 
         {type === "rag" && (
           <g>
             {/* Document Chunking to Vector Embedding Flow */}
-            <rect x="60" y="160" width="140" height="180" rx="8" className="fill-[#FEF9F2]/90 dark:fill-[#172331] stroke-[#8CC0EB]" strokeWidth="1.5" />
-            <text x="80" y="190" className="fill-[#8CC0EB] font-mono text-[11px] font-bold" letterSpacing="1">01_TEXTBOOK</text>
-            <line x1="80" y1="210" x2="180" y2="210" stroke="#8CC0EB" strokeWidth="1" opacity="0.5" />
-            <line x1="80" y1="230" x2="160" y2="230" stroke="#8CC0EB" strokeWidth="1" opacity="0.5" />
-            <line x1="80" y1="250" x2="175" y2="250" stroke="#8CC0EB" strokeWidth="1" opacity="0.5" />
-            <line x1="80" y1="270" x2="140" y2="270" stroke="#8CC0EB" strokeWidth="1" opacity="0.5" />
-            <text x="80" y="315" className="fill-[#64748B] font-mono text-[9px]">CHUNK_SIZE: 512</text>
+            <rect
+              x="60"
+              y="160"
+              width="140"
+              height="180"
+              rx="8"
+              className="fill-[#FEF9F2]/90 dark:fill-[#172331] stroke-[#8CC0EB]"
+              strokeWidth="1.5"
+            />
+            <text
+              x="80"
+              y="190"
+              className="fill-[#8CC0EB] font-mono text-[11px] font-bold"
+              letterSpacing="1"
+            >
+              01_TEXTBOOK
+            </text>
+            <line
+              x1="80"
+              y1="210"
+              x2="180"
+              y2="210"
+              stroke="#8CC0EB"
+              strokeWidth="1"
+              opacity="0.5"
+            />
+            <line
+              x1="80"
+              y1="230"
+              x2="160"
+              y2="230"
+              stroke="#8CC0EB"
+              strokeWidth="1"
+              opacity="0.5"
+            />
+            <line
+              x1="80"
+              y1="250"
+              x2="175"
+              y2="250"
+              stroke="#8CC0EB"
+              strokeWidth="1"
+              opacity="0.5"
+            />
+            <line
+              x1="80"
+              y1="270"
+              x2="140"
+              y2="270"
+              stroke="#8CC0EB"
+              strokeWidth="1"
+              opacity="0.5"
+            />
+            <text x="80" y="315" className="fill-[#64748B] font-mono text-[9px]">
+              CHUNK_SIZE: 512
+            </text>
 
             {/* Flow Arrow */}
             <path d="M 210 250 L 270 250" stroke="#8CC0EB" strokeWidth="2" strokeDasharray="4 4" />
             <polygon points="270,246 278,250 270,254" fill="#8CC0EB" />
 
             {/* Vector DB */}
-            <circle cx="340" cy="250" r="55" className="fill-[#AEE2FF]/40 dark:fill-[#8CC0EB]/20 stroke-[#8CC0EB]" strokeWidth="2" />
-            <text x="305" y="245" className="fill-[#172033] dark:text-[#F4F1EA] font-mono text-[11px] font-bold">MULTILINGUAL</text>
-            <text x="312" y="262" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">EMBEDDINGS</text>
+            <circle
+              cx="340"
+              cy="250"
+              r="55"
+              className="fill-[#AEE2FF]/40 dark:fill-[#8CC0EB]/20 stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
+            <text
+              x="305"
+              y="245"
+              className="fill-[#172033] dark:text-[#F4F1EA] font-mono text-[11px] font-bold"
+            >
+              MULTILINGUAL
+            </text>
+            <text x="312" y="262" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">
+              EMBEDDINGS
+            </text>
 
             {/* Flow Arrow */}
             <path d="M 405 250 L 465 250" stroke="#8CC0EB" strokeWidth="2" strokeDasharray="4 4" />
             <polygon points="465,246 473,250 465,254" fill="#8CC0EB" />
 
             {/* LLM Box */}
-            <rect x="480" y="160" width="240" height="180" rx="8" className="fill-[#FEF9F2]/90 dark:fill-[#172331] stroke-[#8CC0EB]" strokeWidth="2" />
+            <rect
+              x="480"
+              y="160"
+              width="240"
+              height="180"
+              rx="8"
+              className="fill-[#FEF9F2]/90 dark:fill-[#172331] stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
             <rect x="495" y="180" width="210" height="32" rx="4" fill="#AEE2FF" />
-            <text x="510" y="200" className="fill-[#172033] font-mono text-[11px] font-bold">LLAMA 3 / QWEN INFERENCE</text>
-            <text x="500" y="245" className="fill-[#64748B] font-mono text-[10px]">OLLAMA LOCAL ENVIRONMENT</text>
-            <text x="500" y="270" className="fill-[#64748B] font-mono text-[10px]">QLORA FINE-TUNED WEIGHTS</text>
-            <text x="500" y="315" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">FACTUAL GROUNDING: HIGH</text>
+            <text x="510" y="200" className="fill-[#172033] font-mono text-[11px] font-bold">
+              LLAMA 3 / QWEN INFERENCE
+            </text>
+            <text x="500" y="245" className="fill-[#64748B] font-mono text-[10px]">
+              OLLAMA LOCAL ENVIRONMENT
+            </text>
+            <text x="500" y="270" className="fill-[#64748B] font-mono text-[10px]">
+              QLORA FINE-TUNED WEIGHTS
+            </text>
+            <text x="500" y="315" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">
+              FACTUAL GROUNDING: HIGH
+            </text>
           </g>
         )}
 
         {type === "robotics" && (
           <g>
             {/* YOLOv8 -> Flask -> Arduino Nano -> Arm -> Mobile Robot Flow */}
-            <rect x="50" y="170" width="150" height="150" rx="8" className="fill-[#FEF9F2] dark:fill-[#172331] stroke-[#8CC0EB]" strokeWidth="2" />
-            <text x="65" y="200" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">YOLOV8N VISION</text>
-            <text x="65" y="225" className="fill-[#64748B] font-mono text-[9.5px]">CAMERA INFERENCE</text>
-            <text x="65" y="250" className="fill-[#64748B] font-mono text-[9.5px]">BOUNDING BOX COORDS</text>
+            <rect
+              x="50"
+              y="170"
+              width="150"
+              height="150"
+              rx="8"
+              className="fill-[#FEF9F2] dark:fill-[#172331] stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
+            <text x="65" y="200" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">
+              YOLOV8N VISION
+            </text>
+            <text x="65" y="225" className="fill-[#64748B] font-mono text-[9.5px]">
+              CAMERA INFERENCE
+            </text>
+            <text x="65" y="250" className="fill-[#64748B] font-mono text-[9.5px]">
+              BOUNDING BOX COORDS
+            </text>
 
             <path d="M 210 245 L 270 245" stroke="#8CC0EB" strokeWidth="2" />
-            <text x="215" y="235" className="fill-[#8CC0EB] font-mono text-[8.5px]">SERIAL LINK</text>
+            <text x="215" y="235" className="fill-[#8CC0EB] font-mono text-[8.5px]">
+              SERIAL LINK
+            </text>
 
-            <rect x="280" y="170" width="160" height="150" rx="8" className="fill-[#AEE2FF]/30 dark:fill-[#8CC0EB]/20 stroke-[#8CC0EB]" strokeWidth="2" />
-            <text x="295" y="200" className="fill-[#172033] dark:fill-[#F4F1EA] font-mono text-[11px] font-bold">ARDUINO NANO</text>
-            <text x="295" y="225" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">4-DOF ROBOTIC ARM</text>
-            <text x="295" y="250" className="fill-[#64748B] font-mono text-[9.5px]">SERVO KINEMATICS</text>
-            <text x="295" y="275" className="fill-[#64748B] font-mono text-[9.5px]">PICKUP SEQUENCE</text>
+            <rect
+              x="280"
+              y="170"
+              width="160"
+              height="150"
+              rx="8"
+              className="fill-[#AEE2FF]/30 dark:fill-[#8CC0EB]/20 stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
+            <text
+              x="295"
+              y="200"
+              className="fill-[#172033] dark:fill-[#F4F1EA] font-mono text-[11px] font-bold"
+            >
+              ARDUINO NANO
+            </text>
+            <text x="295" y="225" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">
+              4-DOF ROBOTIC ARM
+            </text>
+            <text x="295" y="250" className="fill-[#64748B] font-mono text-[9.5px]">
+              SERVO KINEMATICS
+            </text>
+            <text x="295" y="275" className="fill-[#64748B] font-mono text-[9.5px]">
+              PICKUP SEQUENCE
+            </text>
 
             <path d="M 450 245 L 510 245" stroke="#8CC0EB" strokeWidth="2" />
 
-            <rect x="520" y="170" width="220" height="150" rx="8" className="fill-[#FEF9F2] dark:fill-[#172331] stroke-[#8CC0EB]" strokeWidth="2" />
-            <text x="535" y="200" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">ARDUINO UNO MOBILE</text>
-            <text x="535" y="225" className="fill-[#64748B] font-mono text-[9.5px]">LINE-FOLLOWING ROBOT</text>
-            <text x="535" y="250" className="fill-[#64748B] font-mono text-[9.5px]">FLASK INTEGRATION LAYER</text>
-            <text x="535" y="280" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">AUTONOMOUS TRANSPORT</text>
+            <rect
+              x="520"
+              y="170"
+              width="220"
+              height="150"
+              rx="8"
+              className="fill-[#FEF9F2] dark:fill-[#172331] stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
+            <text x="535" y="200" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">
+              ARDUINO UNO MOBILE
+            </text>
+            <text x="535" y="225" className="fill-[#64748B] font-mono text-[9.5px]">
+              LINE-FOLLOWING ROBOT
+            </text>
+            <text x="535" y="250" className="fill-[#64748B] font-mono text-[9.5px]">
+              FLASK INTEGRATION LAYER
+            </text>
+            <text x="535" y="280" className="fill-[#8CC0EB] font-mono text-[10px] font-bold">
+              AUTONOMOUS TRANSPORT
+            </text>
           </g>
         )}
 
         {type === "backend" && (
           <g>
             {/* FastAPI + Supabase Rule Engine */}
-            <rect x="80" y="150" width="200" height="200" rx="8" className="fill-[#FEF9F2] dark:fill-[#172331] stroke-[#8CC0EB]" strokeWidth="2" />
-            <text x="100" y="185" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">PACKAGING INPUTS</text>
-            <line x1="100" y1="200" x2="260" y2="200" stroke="#8CC0EB" strokeWidth="1" opacity="0.4" />
-            <text x="100" y="225" className="fill-[#64748B] font-mono text-[10px]">Product Fragility Index</text>
-            <text x="100" y="250" className="fill-[#64748B] font-mono text-[10px]">Transport Distance</text>
-            <text x="100" y="275" className="fill-[#64748B] font-mono text-[10px]">Material Compatibility</text>
-            <text x="100" y="300" className="fill-[#64748B] font-mono text-[10px]">Environmental Conditions</text>
+            <rect
+              x="80"
+              y="150"
+              width="200"
+              height="200"
+              rx="8"
+              className="fill-[#FEF9F2] dark:fill-[#172331] stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
+            <text x="100" y="185" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">
+              PACKAGING INPUTS
+            </text>
+            <line
+              x1="100"
+              y1="200"
+              x2="260"
+              y2="200"
+              stroke="#8CC0EB"
+              strokeWidth="1"
+              opacity="0.4"
+            />
+            <text x="100" y="225" className="fill-[#64748B] font-mono text-[10px]">
+              Product Fragility Index
+            </text>
+            <text x="100" y="250" className="fill-[#64748B] font-mono text-[10px]">
+              Transport Distance
+            </text>
+            <text x="100" y="275" className="fill-[#64748B] font-mono text-[10px]">
+              Material Compatibility
+            </text>
+            <text x="100" y="300" className="fill-[#64748B] font-mono text-[10px]">
+              Environmental Conditions
+            </text>
 
             <path d="M 290 250 L 370 250" stroke="#8CC0EB" strokeWidth="2" strokeDasharray="4 4" />
 
-            <rect x="380" y="150" width="340" height="200" rx="8" className="fill-[#AEE2FF]/30 dark:fill-[#8CC0EB]/20 stroke-[#8CC0EB]" strokeWidth="2" />
+            <rect
+              x="380"
+              y="150"
+              width="340"
+              height="200"
+              rx="8"
+              className="fill-[#AEE2FF]/30 dark:fill-[#8CC0EB]/20 stroke-[#8CC0EB]"
+              strokeWidth="2"
+            />
             <rect x="395" y="170" width="310" height="32" rx="4" fill="#AEE2FF" />
-            <text x="410" y="191" className="fill-[#172033] font-mono text-[11px] font-bold">FASTAPI RULE ENGINE & RISK MODEL</text>
-            <text x="410" y="230" className="fill-[#64748B] font-mono text-[10px]">Domain Risk Rules Assessment</text>
-            <text x="410" y="255" className="fill-[#64748B] font-mono text-[10px]">Supabase Relational Data & Auth</text>
-            <text x="410" y="280" className="fill-[#64748B] font-mono text-[10px]">Deterministic Risk Scoring Output</text>
-            <text x="410" y="315" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">RECOMMENDATION ENGINE: OK</text>
+            <text x="410" y="191" className="fill-[#172033] font-mono text-[11px] font-bold">
+              FASTAPI RULE ENGINE & RISK MODEL
+            </text>
+            <text x="410" y="230" className="fill-[#64748B] font-mono text-[10px]">
+              Domain Risk Rules Assessment
+            </text>
+            <text x="410" y="255" className="fill-[#64748B] font-mono text-[10px]">
+              Supabase Relational Data & Auth
+            </text>
+            <text x="410" y="280" className="fill-[#64748B] font-mono text-[10px]">
+              Deterministic Risk Scoring Output
+            </text>
+            <text x="410" y="315" className="fill-[#8CC0EB] font-mono text-[11px] font-bold">
+              RECOMMENDATION ENGINE: OK
+            </text>
           </g>
         )}
 
@@ -689,7 +885,9 @@ function ProjectVisualCanvas({ type, title }: { type: string; title: string }) {
               <path d="M 645 400 L 645 425 L 620 425" strokeWidth="3" stroke="#AEE2FF" />
             </g>
             <rect x="270" y="100" width="180" height="26" rx="4" fill="#AEE2FF" />
-            <text x="280" y="117" className="fill-[#172033] font-mono text-[10.5px] font-bold">BISINDO GESTURE :: 98.4%</text>
+            <text x="280" y="117" className="fill-[#172033] font-mono text-[10.5px] font-bold">
+              BISINDO GESTURE :: 98.4%
+            </text>
 
             <g className="stroke-[#172033] dark:stroke-[#AEE2FF]" fill="none" strokeWidth="2">
               <path d="M 440 370 L 440 300 L 400 240 L 370 180" />
@@ -717,7 +915,12 @@ function ProjectVisualCanvas({ type, title }: { type: string; title: string }) {
         )}
 
         {/* Bottom Technical Telemetry */}
-        <text x="24" y="475" className="fill-[#172033]/70 dark:fill-[#F4F1EA]/70 font-mono text-[9.5px]" letterSpacing="1.8">
+        <text
+          x="24"
+          y="475"
+          className="fill-[#172033]/70 dark:fill-[#F4F1EA]/70 font-mono text-[9.5px]"
+          letterSpacing="1.8"
+        >
           ARCHIVAL NOTE :: CASE STUDY READY · CLICK TO OPEN FULL DOCUMENTATION
         </text>
       </svg>
@@ -725,14 +928,10 @@ function ProjectVisualCanvas({ type, title }: { type: string; title: string }) {
   );
 }
 
-{/* Rich Case Study Drawer Modal */}
-function CaseStudyModal({
-  project,
-  onClose,
-}: {
-  project: FeaturedProject;
-  onClose: () => void;
-}) {
+{
+  /* Rich Case Study Drawer Modal */
+}
+function CaseStudyModal({ project, onClose }: { project: FeaturedProject; onClose: () => void }) {
   return (
     <div
       className="fixed inset-0 z-[100] flex justify-end bg-[#172033]/60 backdrop-blur-md transition-opacity"
@@ -772,9 +971,7 @@ function CaseStudyModal({
             <h2 className="mt-2 font-serif text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
               {project.title}
             </h2>
-            <p className="mt-2 font-serif text-lg italic text-foreground/80">
-              {project.tagline}
-            </p>
+            <p className="mt-2 font-serif text-lg italic text-foreground/80">{project.tagline}</p>
           </div>
 
           {/* Project Visual Diagram */}
@@ -800,9 +997,7 @@ function CaseStudyModal({
               <div className="font-mono text-[0.64rem] font-bold tracking-[0.24em] text-[#8CC0EB]">
                 01 / PROBLEM & MOTIVATION
               </div>
-              <p className="mt-2 text-base leading-relaxed text-foreground/90">
-                {project.problem}
-              </p>
+              <p className="mt-2 text-base leading-relaxed text-foreground/90">{project.problem}</p>
             </div>
 
             {/* Section 02: Technical Approach */}
@@ -834,9 +1029,7 @@ function CaseStudyModal({
               <div className="font-mono text-[0.64rem] font-bold tracking-[0.24em] text-[#8CC0EB]">
                 03 / KEY OUTCOMES & RESULTS
               </div>
-              <p className="mt-2 text-base leading-relaxed text-foreground/90">
-                {project.result}
-              </p>
+              <p className="mt-2 text-base leading-relaxed text-foreground/90">{project.result}</p>
             </div>
 
             {/* Section 04: Technologies Used */}
@@ -877,7 +1070,8 @@ function CaseStudyModal({
                 data-hover="PAPER"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 font-mono text-xs font-semibold text-foreground transition-colors hover:bg-mist"
               >
-                <FileText size={16} className="text-[#8CC0EB]" /> RESEARCH PAPER <ArrowUpRight size={14} />
+                <FileText size={16} className="text-[#8CC0EB]" /> RESEARCH PAPER{" "}
+                <ArrowUpRight size={14} />
               </a>
             )}
           </div>

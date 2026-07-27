@@ -48,10 +48,15 @@ export function ResumeModal() {
               <FileText size={18} />
             </div>
             <div>
-              <h3 id="resume-modal-title" className="font-mono text-xs font-bold tracking-wider text-foreground">
+              <h3
+                id="resume-modal-title"
+                className="font-mono text-xs font-bold tracking-wider text-foreground"
+              >
                 <T en="RÉSUMÉ / CURRICULUM VITAE" id="RESUME / CURRICULUM VITAE" />
               </h3>
-              <p className="text-[0.7rem] font-mono text-muted-foreground">Nasywa Chonifahtun Fiqrihiyah</p>
+              <p className="text-[0.7rem] font-mono text-muted-foreground">
+                Nasywa Chonifahtun Fiqrihiyah
+              </p>
             </div>
           </div>
 
@@ -64,7 +69,9 @@ export function ResumeModal() {
               title="Open in new tab"
             >
               <ExternalLink size={13} />
-              <span className="hidden md:inline"><T en="Open PDF" id="Buka PDF" /></span>
+              <span className="hidden md:inline">
+                <T en="Open PDF" id="Buka PDF" />
+              </span>
             </a>
 
             <a

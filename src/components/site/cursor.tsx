@@ -13,7 +13,10 @@ export function CustomCursor() {
 
     document.documentElement.classList.add("cursor-none-all");
 
-    let rx = 0, ry = 0, x = 0, y = 0;
+    let rx = 0,
+      ry = 0,
+      x = 0,
+      y = 0;
     const move = (e: MouseEvent) => {
       x = e.clientX;
       y = e.clientY;
@@ -26,7 +29,8 @@ export function CustomCursor() {
     const loop = () => {
       rx += (x - rx) * 0.16;
       ry += (y - ry) * 0.16;
-      if (ringRef.current) ringRef.current.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+      if (ringRef.current)
+        ringRef.current.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
       requestAnimationFrame(loop);
     };
     window.addEventListener("mousemove", move);

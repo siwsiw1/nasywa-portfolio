@@ -43,7 +43,8 @@ export function Hero() {
           {/* Supporting Description */}
           <Reveal delay={160}>
             <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-foreground/85">
-              Exploring AI, data, and software development through real projects, experiments, and problems worth solving.
+              Exploring AI, data, and software development through real projects, experiments, and
+              problems worth solving.
             </p>
           </Reveal>
 
@@ -64,9 +65,16 @@ export function Hero() {
 
               <div className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
                 <Sparkles size={12} className="text-[#8CC0EB] shrink-0" />
-                <span className="font-mono text-[0.65rem] tracking-wider uppercase">Open to roles in:</span>
+                <span className="font-mono text-[0.65rem] tracking-wider uppercase">
+                  Open to roles in:
+                </span>
                 <div className="flex flex-wrap gap-1.5">
-                  {["AI / Machine Learning", "Data", "Software Development", "Digital Transformation"].map((tag) => (
+                  {[
+                    "AI / Machine Learning",
+                    "Data",
+                    "Software Development",
+                    "Digital Transformation",
+                  ].map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-[#8CC0EB]/30 bg-mist px-2.5 py-0.5 font-mono text-[0.64rem] font-medium text-foreground/90"
@@ -96,7 +104,10 @@ export function Hero() {
                 className="group inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3.5 text-sm font-medium text-foreground/80 transition-colors hover:border-[#8CC0EB] hover:bg-mist hover:text-foreground cursor-pointer"
               >
                 View résumé
-                <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
               </button>
             </div>
           </Reveal>

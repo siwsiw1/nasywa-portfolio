@@ -81,13 +81,15 @@ export function ExplorationMap() {
           <Compass size={12} className="text-[#8CC0EB]" />
           <span>CURRENT ORBIT</span>
         </div>
-        <span className="text-[#64748B] dark:text-[#94A3B8] shrink-0">
-          04 FIELDS
-        </span>
+        <span className="text-[#64748B] dark:text-[#94A3B8] shrink-0">04 FIELDS</span>
       </div>
 
       {/* SVG Canvas for Orbits & Connection Lines */}
-      <svg viewBox="0 0 500 640" className="absolute inset-0 h-full w-full pointer-events-none" aria-hidden="true">
+      <svg
+        viewBox="0 0 500 640"
+        className="absolute inset-0 h-full w-full pointer-events-none"
+        aria-hidden="true"
+      >
         <defs>
           <pattern id="blue-orbit-dots" width="24" height="24" patternUnits="userSpaceOnUse">
             <circle cx="2" cy="2" r="0.8" className="fill-[#8CC0EB]/30 dark:fill-[#8CC0EB]/20" />
@@ -96,18 +98,71 @@ export function ExplorationMap() {
         <rect width="500" height="640" fill="url(#blue-orbit-dots)" />
 
         {/* Central Orbital Rings around (250, 218) */}
-        <circle cx="250" cy="218" r="120" fill="none" stroke="#8CC0EB" strokeWidth="1" strokeDasharray="3 5" opacity="0.35" />
-        <circle cx="250" cy="218" r="70" fill="none" stroke="#AEE2FF" strokeWidth="1" opacity="0.25" />
+        <circle
+          cx="250"
+          cy="218"
+          r="120"
+          fill="none"
+          stroke="#8CC0EB"
+          strokeWidth="1"
+          strokeDasharray="3 5"
+          opacity="0.35"
+        />
+        <circle
+          cx="250"
+          cy="218"
+          r="70"
+          fill="none"
+          stroke="#AEE2FF"
+          strokeWidth="1"
+          opacity="0.25"
+        />
 
         {/* Dynamic connection lines to nodes */}
         {/* Top: AI (250, 95) */}
-        <line x1="250" y1="218" x2="250" y2="95" stroke="#8CC0EB" strokeWidth={active === "AI" ? "2" : "1.2"} strokeDasharray={active === "AI" ? "none" : "4 4"} opacity={active === "AI" ? "0.9" : "0.4"} />
+        <line
+          x1="250"
+          y1="218"
+          x2="250"
+          y2="95"
+          stroke="#8CC0EB"
+          strokeWidth={active === "AI" ? "2" : "1.2"}
+          strokeDasharray={active === "AI" ? "none" : "4 4"}
+          opacity={active === "AI" ? "0.9" : "0.4"}
+        />
         {/* Left: DATA (130, 218) */}
-        <line x1="250" y1="218" x2="130" y2="218" stroke="#8CC0EB" strokeWidth={active === "DATA" ? "2" : "1.2"} strokeDasharray={active === "DATA" ? "none" : "4 4"} opacity={active === "DATA" ? "0.9" : "0.4"} />
+        <line
+          x1="250"
+          y1="218"
+          x2="130"
+          y2="218"
+          stroke="#8CC0EB"
+          strokeWidth={active === "DATA" ? "2" : "1.2"}
+          strokeDasharray={active === "DATA" ? "none" : "4 4"}
+          opacity={active === "DATA" ? "0.9" : "0.4"}
+        />
         {/* Right: SOFTWARE (370, 218) */}
-        <line x1="250" y1="218" x2="370" y2="218" stroke="#8CC0EB" strokeWidth={active === "SOFTWARE" ? "2" : "1.2"} strokeDasharray={active === "SOFTWARE" ? "none" : "4 4"} opacity={active === "SOFTWARE" ? "0.9" : "0.4"} />
+        <line
+          x1="250"
+          y1="218"
+          x2="370"
+          y2="218"
+          stroke="#8CC0EB"
+          strokeWidth={active === "SOFTWARE" ? "2" : "1.2"}
+          strokeDasharray={active === "SOFTWARE" ? "none" : "4 4"}
+          opacity={active === "SOFTWARE" ? "0.9" : "0.4"}
+        />
         {/* Bottom: ROBOTICS (250, 340) */}
-        <line x1="250" y1="218" x2="250" y2="340" stroke="#8CC0EB" strokeWidth={active === "ROBOTICS" ? "2" : "1.2"} strokeDasharray={active === "ROBOTICS" ? "none" : "4 4"} opacity={active === "ROBOTICS" ? "0.9" : "0.4"} />
+        <line
+          x1="250"
+          y1="218"
+          x2="250"
+          y2="340"
+          stroke="#8CC0EB"
+          strokeWidth={active === "ROBOTICS" ? "2" : "1.2"}
+          strokeDasharray={active === "ROBOTICS" ? "none" : "4 4"}
+          opacity={active === "ROBOTICS" ? "0.9" : "0.4"}
+        />
 
         {/* Technical Coordinate Annotations */}
         <text x="24" y="618" className="fill-[#64748B] font-mono text-[9px]" letterSpacing="1.5">
@@ -225,7 +280,10 @@ export function ExplorationMap() {
                     className="group/proj inline-flex items-center gap-1 font-mono text-[0.7rem] font-semibold text-[#172033] dark:text-[#AEE2FF] hover:underline underline-offset-4"
                   >
                     <span>{proj.name}</span>
-                    <ArrowUpRight size={11} className="transition-transform group-hover/proj:-translate-y-0.5 group-hover/proj:translate-x-0.5" />
+                    <ArrowUpRight
+                      size={11}
+                      className="transition-transform group-hover/proj:-translate-y-0.5 group-hover/proj:translate-x-0.5"
+                    />
                   </a>
                 ))}
               </div>
@@ -238,7 +296,10 @@ export function ExplorationMap() {
             </div>
             <div className="mt-1 text-sm text-foreground/80">
               Explore four core engineering domains —{" "}
-              <span className="font-serif italic text-foreground font-medium">building real systems to understand deep concepts</span>.
+              <span className="font-serif italic text-foreground font-medium">
+                building real systems to understand deep concepts
+              </span>
+              .
             </div>
           </div>
         )}
@@ -300,15 +361,15 @@ function Node({
           >
             <Icon
               size={18}
-              className={`transition-colors ${
-                active ? "text-[#172033]" : "text-[#8CC0EB]"
-              }`}
+              className={`transition-colors ${active ? "text-[#172033]" : "text-[#8CC0EB]"}`}
             />
           </div>
         </div>
         <span
           className={`font-mono text-[0.6rem] sm:text-[0.64rem] tracking-[0.22em] font-bold transition-colors ${
-            active ? "text-[#172033] dark:text-[#AEE2FF]" : "text-[#172033]/80 dark:text-[#F4F1EA]/80"
+            active
+              ? "text-[#172033] dark:text-[#AEE2FF]"
+              : "text-[#172033]/80 dark:text-[#F4F1EA]/80"
           }`}
         >
           {label}
@@ -317,4 +378,3 @@ function Node({
     </button>
   );
 }
-

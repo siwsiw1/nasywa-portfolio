@@ -24,7 +24,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Nasywa — I Learn by Building Things." },
       {
         property: "og:description",
-        content: "Exploring AI, data, and software development through real projects, experiments, and problems worth solving.",
+        content:
+          "Exploring AI, data, and software development through real projects, experiments, and problems worth solving.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
