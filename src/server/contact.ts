@@ -11,7 +11,7 @@ export interface ContactFormData {
 export interface ContactResponse {
   success: boolean;
   error?: string;
-  data?: unknown;
+  data?: { id?: string };
 }
 
 function escapeHtml(str: string): string {
@@ -95,7 +95,7 @@ export const sendContactEmail = createServerFn({ method: "POST" })
 
       return {
         success: true,
-        data: response.data,
+        data: response.data ? { id: response.data.id } : undefined,
       };
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred.";

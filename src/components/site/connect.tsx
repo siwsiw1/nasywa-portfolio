@@ -3,7 +3,7 @@ import { SectionLabel } from "./section-label";
 import { Reveal } from "./reveal";
 import { T, useSite } from "./theme-provider";
 import { Mail, Linkedin, Github, FileText, Send, CheckCircle2, AlertCircle } from "lucide-react";
-import { sendContactEmail } from "../../server/contact";
+import { sendContactEmail, type ContactResponse } from "../../server/contact";
 
 export function Connect() {
   const { lang, openResume } = useSite();
@@ -52,7 +52,7 @@ export function Connect() {
     setIsSubmitting(true);
 
     try {
-      const res = await sendContactEmail({ data: formData });
+      const res = (await sendContactEmail({ data: formData })) as ContactResponse;
 
       if (res.success) {
         setIsSuccess(true);
