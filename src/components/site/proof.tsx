@@ -48,6 +48,9 @@ const proofItems: ProofItem[] = [
     tabCategories: ["ALL", "CERTIFICATIONS"],
     isFeatured: true,
     statusBadge: "AI & CLOUD",
+    certImageUrl: "/certificates/oracle-ai-2025.png",
+    verifyUrl:
+      "https://catalog-education.oracle.com/ords/certview/sharebadge?id=98D444ADB18B8272C36C1181E5FAD4F8B7DC1E9538922369F96CF384AFF651A5",
     desc: {
       en: "Foundational cloud certification validating core AI concepts, Machine Learning workflows, Deep Learning models, Generative AI, and Oracle Cloud Infrastructure AI services.",
       id: "Sertifikasi cloud tingkat dasar yang memvalidasi konsep dasar AI, alur kerja Machine Learning, model Deep Learning, Generative AI, dan layanan OCI AI.",
@@ -63,7 +66,7 @@ const proofItems: ProofItem[] = [
     tabCategories: ["ALL", "CERTIFICATIONS"],
     isFeatured: true,
     statusBadge: "NATIONAL CERTIFICATION",
-    certImageUrl: "/certificates/bnsp-data-scientist.png",
+    certImageUrl: "/certificates/bnsp-associate-data-science.webp",
     desc: {
       en: "National professional certification (No. Reg. TIK 1565 07930 2024) validating competencies in data collection, data preparation, exploratory data analysis, statistical modeling, and data science methodology.",
       id: "Sertifikasi profesi nasional (No. Reg. TIK 1565 07930 2024) yang memvalidasi kompetensi dalam pengumpulan data, preparasi data, analisis data eksploratif, pemodelan statistik, dan metodologi sains data.",
@@ -114,9 +117,10 @@ const proofItems: ProofItem[] = [
     tabCategories: ["ALL", "CERTIFICATIONS"],
     isFeatured: true,
     statusBadge: "NATIONAL CERTIFICATION",
+    certImageUrl: "/certificates/bnsp-junior-network-administrator.webp",
     desc: {
       en: "National certification validating core skills in network configuration, IP addressing, routing fundamentals, network security, and infrastructure troubleshooting.",
-      id: "Sertifikasi nasional yang memvalidasi keahlian inti dalam konfigurasi jaringan, pengalamatan IP, fondasi routing, keamanan jaringan, dan troubleshooting infrastruktur.",
+      id: "Sertifikasi nasional yang memvalidasi keahlian inti dalam konfigurasi jaringan, pengalamatan IP, fondasi routing, keamanan jaringan, dan troubleshooting troubleshooting.",
     },
     techTags: ["Networking", "IP Addressing", "Routing", "Infrastructure"],
   },
@@ -129,6 +133,7 @@ const proofItems: ProofItem[] = [
     tabCategories: ["ALL", "CERTIFICATIONS"],
     isFeatured: true,
     statusBadge: "GOOGLE CREDENTIAL",
+    certImageUrl: "/certificates/google-essentials.webp",
     desc: {
       en: "Professional credential covering practical AI applications, prompt engineering techniques, productivity workflows, and responsible AI principles.",
       id: "Kredensial profesional yang mencakup aplikasi AI praktis, teknik prompt engineering, alur kerja produktivitas, dan prinsip AI yang bertanggung jawab.",
@@ -136,13 +141,14 @@ const proofItems: ProofItem[] = [
     techTags: ["Applied AI", "Prompt Engineering", "AI Productivity"],
   },
 
-  // ADDITIONAL CERTIFICATIONS & CREDENTIALS
+
   {
     id: "komdigi-ai-engineer",
     title: "AI Engineer for Millennial",
     issuer: "Kementerian Komunikasi dan Digital (Komdigi)",
     category: "CERTIFICATIONS",
     tabCategories: ["ALL", "CERTIFICATIONS", "LEARNING"],
+    certImageUrl: "/certificates/ai-engineer-for-millenial.webp",
     desc: {
       en: "Technical training program covering AI fundamentals, machine learning algorithms, and intelligent systems development.",
       id: "Program pelatihan teknis yang mencakup fondasi AI, algoritma machine learning, dan pengembangan sistem cerdas.",
@@ -155,6 +161,7 @@ const proofItems: ProofItem[] = [
     issuer: "Kementerian Komunikasi dan Digital (Komdigi)",
     category: "CERTIFICATIONS",
     tabCategories: ["ALL", "CERTIFICATIONS", "LEARNING"],
+    certImageUrl: "/certificates/fundamental-of-data-engineering.webp",
     desc: {
       en: "Specialized course covering data pipeline fundamentals, ETL processes, data storage paradigms, and relational schema design.",
       id: "Pelatihan khusus fondasi pipeline data, proses ETL, paradigma penyimpanan data, dan desain skema relasional.",
@@ -182,6 +189,7 @@ const proofItems: ProofItem[] = [
     issuer: "Kaggle",
     category: "LEARNING",
     tabCategories: ["ALL", "LEARNING"],
+    certImageUrl: "/certificates/intro-machine-learning.webp",
     desc: {
       en: "Practical course covering Decision Trees, Random Forests, model validation, and basic machine learning workflows.",
       id: "Kursus praktis Decision Trees, Random Forests, validasi model, dan alur kerja dasar machine learning.",
@@ -190,10 +198,11 @@ const proofItems: ProofItem[] = [
   },
   {
     id: "kaggle-pandas",
-    title: "Pandas Data Manipulation",
+    title: "Pandas",
     issuer: "Kaggle",
     category: "LEARNING",
     tabCategories: ["ALL", "LEARNING"],
+    certImageUrl: "/certificates/pandas.webp",
     desc: {
       en: "Hands-on data manipulation course focusing on DataFrame indexing, grouping, sorting, reshaping, and data cleaning.",
       id: "Kursus manipulasi data praktis pengindeksan DataFrame, grouping, sorting, dan pembersihan data.",
@@ -206,6 +215,7 @@ const proofItems: ProofItem[] = [
     issuer: "Kementerian Komunikasi dan Digital (Komdigi)",
     category: "LEARNING",
     tabCategories: ["ALL", "LEARNING"],
+    certImageUrl: "/certificates/karir-data-analytic.webp",
     desc: {
       en: "Industry overview course detailing business intelligence, data analytics roles, data-driven decision making, and tools.",
       id: "Gambaran industri seputar business intelligence, peran analis data, pengambilan keputusan berbasis data, dan alat analisis.",
@@ -218,6 +228,7 @@ const proofItems: ProofItem[] = [
     issuer: "AI Ambassador / U.S. Embassy Jakarta",
     category: "LEARNING",
     tabCategories: ["ALL", "LEARNING"],
+    certImageUrl: "/certificates/into-the-ai-verse-participant.webp",
     desc: {
       en: "Interactive workshop exploring artificial intelligence innovations, ethics, technology policy, and digital literacy.",
       id: "Workshop interaktif eksplorasi inovasi kecerdasan buatan, etika, kebijakan teknologi, dan literasi digital.",
@@ -309,11 +320,10 @@ export function Proof() {
                       setShowAllArchive(false);
                     }}
                     data-hover="FILTER"
-                    className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${
-                      activeTab === tab
+                    className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${activeTab === tab
                         ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
                         : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
-                    }`}
+                      }`}
                   >
                     {tab}
                   </button>
@@ -329,11 +339,10 @@ export function Proof() {
                 <div
                   onClick={() => setSelectedProof(item)}
                   data-hover="INSPECT"
-                  className={`group flex h-full flex-col justify-between rounded-xl p-6 transition-all duration-300 cursor-pointer ${
-                    item.isFeatured
+                  className={`group flex h-full flex-col justify-between rounded-xl p-6 transition-all duration-300 cursor-pointer ${item.isFeatured
                       ? "border border-[#8CC0EB]/70 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 shadow-xs hover:border-[#8CC0EB] hover:shadow-md"
                       : "border border-border/80 bg-[#FEF9F2]/70 dark:bg-[#172331]/70 hover:border-[#8CC0EB]/60 hover:shadow-xs"
-                  }`}
+                    }`}
                 >
                   <div>
                     <div className="flex items-center justify-between font-mono text-[0.6rem] font-bold">
@@ -529,31 +538,34 @@ export function Proof() {
             </div>
 
             {/* Modal Footer */}
-            <div className="mt-8 pt-4 border-t border-border flex items-center justify-between">
+            <div className="mt-8 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
               <span className="font-mono text-[0.6rem] text-muted-foreground">
                 Verified Field Journal Evidence
               </span>
-              {selectedProof.certImageUrl ? (
-                <a
-                  href={selectedProof.certImageUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-hover="FULLSCREEN"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 font-mono text-xs font-bold text-[#172033] hover:bg-[#8CC0EB] transition-colors cursor-pointer"
-                >
-                  VIEW CERTIFICATE IMAGE <ExternalLink size={13} />
-                </a>
-              ) : selectedProof.verifyUrl ? (
-                <a
-                  href={selectedProof.verifyUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-hover="VERIFY"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 font-mono text-xs font-bold text-[#172033] hover:bg-[#8CC0EB] transition-colors cursor-pointer"
-                >
-                  VERIFY CREDENTIAL <ExternalLink size={13} />
-                </a>
-              ) : null}
+              <div className="flex flex-wrap items-center gap-2">
+                {selectedProof.verifyUrl && (
+                  <a
+                    href={selectedProof.verifyUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-hover="VERIFY"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#8CC0EB] bg-[#AEE2FF] px-4 py-2 font-mono text-xs font-bold text-[#172033] hover:bg-[#8CC0EB] transition-colors cursor-pointer shadow-2xs"
+                  >
+                    VERIFY CREDENTIAL <ExternalLink size={13} />
+                  </a>
+                )}
+                {selectedProof.certImageUrl && (
+                  <a
+                    href={selectedProof.certImageUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-hover="FULLSCREEN"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-mist/50 px-4 py-2 font-mono text-xs font-bold text-foreground hover:border-[#8CC0EB] transition-colors cursor-pointer"
+                  >
+                    VIEW IMAGE <ExternalLink size={13} />
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
