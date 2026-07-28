@@ -165,7 +165,7 @@ const featuredProjects: FeaturedProject[] = [
     note: "FEATURED 04",
     domain: "DEEP LEARNING / ACCESSIBILITY",
     filterCategory: ["ALL", "AI / ML", "COMPUTER VISION", "SOFTWARE"],
-    year: "2026",
+    year: "2025",
     title: "BISINDO Sign Language System",
     tagline: "Learning & Recognition Application",
     category: "Deep Learning / Computer Vision / Accessibility",
@@ -337,11 +337,10 @@ export function Projects() {
                     setShowAllProjects(false);
                   }}
                   data-hover="SELECT"
-                  className={`rounded-full px-4 py-1.5 font-mono text-xs font-semibold transition-all cursor-pointer ${
-                    selectedFilter === cat
+                  className={`rounded-full px-4 py-1.5 font-mono text-xs font-semibold transition-all cursor-pointer ${selectedFilter === cat
                       ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
                       : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -520,11 +519,10 @@ function ProjectCardPreview({
               e.stopPropagation();
               setViewMode("image");
             }}
-            className={`px-2.5 py-0.5 rounded-full font-mono text-[0.58rem] font-bold transition-colors cursor-pointer ${
-              viewMode === "image"
+            className={`px-2.5 py-0.5 rounded-full font-mono text-[0.58rem] font-bold transition-colors cursor-pointer ${viewMode === "image"
                 ? "bg-[#AEE2FF] text-[#172033] dark:bg-[#8CC0EB] dark:text-[#101820]"
                 : "text-muted-foreground hover:text-foreground"
-            }`}
+              }`}
           >
             <Monitor size={10} className="inline mr-1" /> WEB PREVIEW
           </button>
@@ -535,11 +533,10 @@ function ProjectCardPreview({
             e.stopPropagation();
             setViewMode("diagram");
           }}
-          className={`px-2.5 py-0.5 rounded-full font-mono text-[0.58rem] font-bold transition-colors cursor-pointer ${
-            viewMode === "diagram" || !project.imageUrl
+          className={`px-2.5 py-0.5 rounded-full font-mono text-[0.58rem] font-bold transition-colors cursor-pointer ${viewMode === "diagram" || !project.imageUrl
               ? "bg-[#AEE2FF] text-[#172033] dark:bg-[#8CC0EB] dark:text-[#101820]"
               : "text-muted-foreground hover:text-foreground"
-          }`}
+            }`}
         >
           <Layers size={10} className="inline mr-1" /> ARCHITECTURE
         </button>
@@ -1002,11 +999,10 @@ function CaseStudyModal({ project, onClose }: { project: FeaturedProject; onClos
                   <button
                     type="button"
                     onClick={() => setActiveTab("preview")}
-                    className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${
-                      activeTab === "preview"
+                    className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${activeTab === "preview"
                         ? "bg-[#AEE2FF] text-[#172033] border border-[#8CC0EB] shadow-xs"
                         : "bg-mist/50 text-foreground/70 hover:text-foreground border border-border"
-                    }`}
+                      }`}
                   >
                     <Monitor size={13} className="inline mr-1.5" /> WEB APP PREVIEW
                   </button>
@@ -1015,11 +1011,10 @@ function CaseStudyModal({ project, onClose }: { project: FeaturedProject; onClos
                   <button
                     type="button"
                     onClick={() => setActiveTab("gallery")}
-                    className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${
-                      activeTab === "gallery"
+                    className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${activeTab === "gallery"
                         ? "bg-[#AEE2FF] text-[#172033] border border-[#8CC0EB] shadow-xs"
                         : "bg-mist/50 text-foreground/70 hover:text-foreground border border-border"
-                    }`}
+                      }`}
                   >
                     <ImageIcon size={13} className="inline mr-1.5" /> FIGURES & GALLERY ({images.length})
                   </button>
@@ -1027,11 +1022,10 @@ function CaseStudyModal({ project, onClose }: { project: FeaturedProject; onClos
                 <button
                   type="button"
                   onClick={() => setActiveTab("architecture")}
-                  className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${
-                    activeTab === "architecture" || (!project.imageUrl && images.length === 0)
+                  className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${activeTab === "architecture" || (!project.imageUrl && images.length === 0)
                       ? "bg-[#AEE2FF] text-[#172033] border border-[#8CC0EB] shadow-xs"
                       : "bg-mist/50 text-foreground/70 hover:text-foreground border border-border"
-                  }`}
+                    }`}
                 >
                   <Layers size={13} className="inline mr-1.5" /> ARCHITECTURE
                 </button>
@@ -1127,11 +1121,10 @@ function CaseStudyModal({ project, onClose }: { project: FeaturedProject; onClos
                     key={i}
                     type="button"
                     onClick={() => setGalleryIndex(i)}
-                    className={`relative aspect-[16/10] w-20 shrink-0 overflow-hidden rounded-md border transition-all cursor-pointer ${
-                      galleryIndex === i
+                    className={`relative aspect-[16/10] w-20 shrink-0 overflow-hidden rounded-md border transition-all cursor-pointer ${galleryIndex === i
                         ? "border-[#8CC0EB] ring-2 ring-[#8CC0EB]/50"
                         : "border-border/60 opacity-60 hover:opacity-100"
-                    }`}
+                      }`}
                   >
                     <img src={img} alt="" className="h-full w-full object-cover" />
                   </button>
