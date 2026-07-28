@@ -38,7 +38,7 @@ type ProofItem = {
 };
 
 const proofItems: ProofItem[] = [
-  // FEATURED & CERTIFICATIONS
+  // 1. PINNACLE GLOBAL & NATIONAL CERTIFICATIONS / ACHIEVEMENTS
   {
     id: "oracle-ai-2025",
     title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
@@ -93,22 +93,6 @@ const proofItems: ProofItem[] = [
     techTags: ["Frontend Dev", "Rapid Prototyping", "Team Hackathon"],
   },
   {
-    id: "datathon-ui-2026",
-    title: "Datathon RISTEK FASILKOM UI",
-    issuer: "Faculty of Computer Science, Universitas Indonesia",
-    year: "2026",
-    category: "COMPETITIONS",
-    tabCategories: ["ALL", "COMPETITIONS"],
-    isFeatured: true,
-    isOngoing: true,
-    statusBadge: "ONGOING COMPETITION",
-    desc: {
-      en: "Participating in a national data science competition involving real-world data analysis, predictive modeling, and scientific paper development.",
-      id: "Berpartisipasi dalam kompetisi sains data nasional yang melibatkan analisis data dunia nyata, pemodelan prediktif, dan penyusunan paper ilmiah.",
-    },
-    techTags: ["Data Science", "Predictive Modeling", "Scientific Paper"],
-  },
-  {
     id: "bnsp-network-admin",
     title: "Junior Network Administrator — BNSP",
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
@@ -120,9 +104,24 @@ const proofItems: ProofItem[] = [
     certImageUrl: "/certificates/bnsp-junior-network-administrator.webp",
     desc: {
       en: "National certification validating core skills in network configuration, IP addressing, routing fundamentals, network security, and infrastructure troubleshooting.",
-      id: "Sertifikasi nasional yang memvalidasi keahlian inti dalam konfigurasi jaringan, pengalamatan IP, fondasi routing, keamanan jaringan, dan troubleshooting troubleshooting.",
+      id: "Sertifikasi nasional yang memvalidasi keahlian inti dalam konfigurasi jaringan, pengalamatan IP, fondasi routing, keamanan jaringan, dan troubleshooting infrastruktur.",
     },
     techTags: ["Networking", "IP Addressing", "Routing", "Infrastructure"],
+  },
+  {
+    id: "link-women-2025",
+    title: "Link Women Intensive Bootcamp — Top 200 Participant",
+    issuer: "Markoding, LinkedIn & UN Women Indonesia",
+    year: "2025",
+    category: "LEARNING",
+    tabCategories: ["ALL", "LEARNING", "ACHIEVEMENTS"],
+    statusBadge: "TOP 200 BOOTCAMP",
+    certImageUrl: "/certificates/top200-link-women.webp",
+    desc: {
+      en: "Certificate of completion (No. MARKODING/CERT/LW/2025.XI/0120) for Link Women Intensive Bootcamp focusing on Artificial Intelligence, held by Markoding, LinkedIn & UN Women Indonesia.",
+      id: "Sertifikat kelulusan (No. MARKODING/CERT/LW/2025.XI/0120) Link Women Intensive Bootcamp dengan materi Artificial Intelligence oleh Markoding, LinkedIn & UN Women Indonesia.",
+    },
+    techTags: ["Artificial Intelligence", "Leadership", "UN Women"],
   },
   {
     id: "google-ai-essentials",
@@ -141,7 +140,23 @@ const proofItems: ProofItem[] = [
     techTags: ["Applied AI", "Prompt Engineering", "AI Productivity"],
   },
 
-
+  // 2. HIGH-VALUE TECHNICAL SPECIALIZATION & COMPETITIONS
+  {
+    id: "datathon-ui-2026",
+    title: "Datathon RISTEK FASILKOM UI",
+    issuer: "Faculty of Computer Science, Universitas Indonesia",
+    year: "2026",
+    category: "COMPETITIONS",
+    tabCategories: ["ALL", "COMPETITIONS"],
+    isFeatured: false,
+    isOngoing: true,
+    statusBadge: "ONGOING COMPETITION",
+    desc: {
+      en: "Participating in a national data science competition involving real-world data analysis, predictive modeling, and scientific paper development.",
+      id: "Berpartisipasi dalam kompetisi sains data nasional yang melibatkan analisis data dunia nyata, pemodelan prediktif, dan penyusunan paper ilmiah.",
+    },
+    techTags: ["Data Science", "Predictive Modeling", "Scientific Paper"],
+  },
   {
     id: "komdigi-ai-engineer",
     title: "AI Engineer for Millennial",
@@ -169,20 +184,21 @@ const proofItems: ProofItem[] = [
     techTags: ["Data Pipelines", "ETL", "Data Storage"],
   },
   {
-    id: "link-women-2025",
-    title: "Link Women Intensive Bootcamp — Top 200 Participant",
-    issuer: "Markoding, LinkedIn & UN Women Indonesia",
-    year: "2025",
+    id: "asean-data-science-2026",
+    title: "ASEAN Data Science Explorers — SAP Analytics Cloud",
+    issuer: "ASEAN Foundation & SAP",
+    year: "2026",
     category: "LEARNING",
-    tabCategories: ["ALL", "LEARNING", "ACHIEVEMENTS"],
-    statusBadge: "TOP 200 BOOTCAMP",
-    certImageUrl: "/certificates/link-women-bootcamp-2025.png",
+    tabCategories: ["ALL", "LEARNING", "CERTIFICATIONS"],
+    certImageUrl: "/certificates/asean-data-science.webp",
     desc: {
-      en: "Certificate of completion (No. MARKODING/CERT/LW/2025.XI/0120) for Link Women Intensive Bootcamp focusing on Artificial Intelligence, held by Markoding, LinkedIn & UN Women Indonesia.",
-      id: "Sertifikat kelulusan (No. MARKODING/CERT/LW/2025.XI/0120) Link Women Intensive Bootcamp dengan materi Artificial Intelligence oleh Markoding, LinkedIn & UN Women Indonesia.",
+      en: "Certificate of participation for the ASEAN Data Science Explorers 2026 Enablement Session focusing on SAP Analytics Cloud training, organized by SAP, ASEAN Foundation, and ASEAN Youth Organization.",
+      id: "Sertifikat keikutsertaan ASEAN Data Science Explorers 2026 Enablement Session dengan fokus pelatihan SAP Analytics Cloud oleh SAP, ASEAN Foundation, dan ASEAN Youth Organization.",
     },
-    techTags: ["Artificial Intelligence", "Leadership", "UN Women"],
+    techTags: ["ASEAN Foundation", "SAP Analytics Cloud", "Data Analytics", "ASEAN DSE"],
   },
+
+  // 3. SKILL COURSES & WORKSHOPS
   {
     id: "kaggle-intro-ml",
     title: "Intro to Machine Learning",
@@ -210,19 +226,6 @@ const proofItems: ProofItem[] = [
     techTags: ["Pandas", "Python Data", "Data Wrangling"],
   },
   {
-    id: "komdigi-data-analytics",
-    title: "Wawasan Karir dalam Bidang Data Analytics",
-    issuer: "Kementerian Komunikasi dan Digital (Komdigi)",
-    category: "LEARNING",
-    tabCategories: ["ALL", "LEARNING"],
-    certImageUrl: "/certificates/karir-data-analytic.webp",
-    desc: {
-      en: "Industry overview course detailing business intelligence, data analytics roles, data-driven decision making, and tools.",
-      id: "Gambaran industri seputar business intelligence, peran analis data, pengambilan keputusan berbasis data, dan alat analisis.",
-    },
-    techTags: ["Data Analytics", "Business Intelligence"],
-  },
-  {
     id: "ai-verse-us-embassy",
     title: "The AI-Verse Workshop",
     issuer: "AI Ambassador / U.S. Embassy Jakarta",
@@ -234,6 +237,19 @@ const proofItems: ProofItem[] = [
       id: "Workshop interaktif eksplorasi inovasi kecerdasan buatan, etika, kebijakan teknologi, dan literasi digital.",
     },
     techTags: ["AI Ethics", "Tech Innovation", "U.S. Embassy"],
+  },
+  {
+    id: "komdigi-data-analytics",
+    title: "Wawasan Karir dalam Bidang Data Analytics",
+    issuer: "Kementerian Komunikasi dan Digital (Komdigi)",
+    category: "LEARNING",
+    tabCategories: ["ALL", "LEARNING"],
+    certImageUrl: "/certificates/karir-data-analytic.webp",
+    desc: {
+      en: "Industry overview course detailing business intelligence, data analytics roles, data-driven decision making, and tools.",
+      id: "Gambaran industri seputar business intelligence, peran analis data, pengambilan keputusan berbasis data, dan alat analisis.",
+    },
+    techTags: ["Data Analytics", "Business Intelligence"],
   },
 ];
 
@@ -321,8 +337,8 @@ export function Proof() {
                     }}
                     data-hover="FILTER"
                     className={`rounded-full px-3.5 py-1 font-mono text-xs font-semibold transition-all cursor-pointer ${activeTab === tab
-                        ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
-                        : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
+                      ? "border border-[#8CC0EB] bg-[#AEE2FF] text-[#172033] shadow-xs"
+                      : "border border-border/80 bg-mist/50 text-foreground/70 hover:border-[#8CC0EB]/60 hover:text-foreground"
                       }`}
                   >
                     {tab}
@@ -340,8 +356,8 @@ export function Proof() {
                   onClick={() => setSelectedProof(item)}
                   data-hover="INSPECT"
                   className={`group flex h-full flex-col justify-between rounded-xl p-6 transition-all duration-300 cursor-pointer ${item.isFeatured
-                      ? "border border-[#8CC0EB]/70 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 shadow-xs hover:border-[#8CC0EB] hover:shadow-md"
-                      : "border border-border/80 bg-[#FEF9F2]/70 dark:bg-[#172331]/70 hover:border-[#8CC0EB]/60 hover:shadow-xs"
+                    ? "border border-[#8CC0EB]/70 bg-[#FEF9F2]/90 dark:bg-[#172331]/90 shadow-xs hover:border-[#8CC0EB] hover:shadow-md"
+                    : "border border-border/80 bg-[#FEF9F2]/70 dark:bg-[#172331]/70 hover:border-[#8CC0EB]/60 hover:shadow-xs"
                     }`}
                 >
                   <div>
